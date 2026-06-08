@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🔥 GLOBAL FONT STYLE */
+@layer base {
+
+    body {
+        @apply font-body text-gray-800;
+    }
+
+    h1 {
+        @apply font-heading text-4xl md:text-5xl font-bold;
+    }
+
+    h2 {
+        @apply font-heading text-3xl font-semibold;
+    }
+
+    h3 {
+        @apply font-heading text-2xl font-semibold;
+    }
+
+    h4 {
+        @apply font-heading text-xl font-medium;
+    }
+
+    h5 {
+        @apply font-heading text-lg;
+    }
+
+    h6 {
+        @apply font-heading text-base;
+    }
+
+    p {
+        @apply font-body text-gray-600 leading-relaxed;
+    }
+
+    input, textarea {
+        @apply font-body border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary;
+    }
+
+    label {
+        @apply font-body text-sm text-gray-700;
+    }
+
+    button {
+        @apply font-body font-medium;
+    }
+}
