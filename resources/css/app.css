@@ -6,7 +6,7 @@
 @layer base {
 
     body {
-        @apply font-body text-gray-800;
+        @apply font-body text-black;
     }
 
     h1 {
@@ -34,7 +34,7 @@
     }
 
     p {
-        @apply font-body text-gray-600 leading-relaxed;
+        @apply font-body leading-relaxed;
     }
 
     input, textarea {
@@ -42,7 +42,7 @@
     }
 
     label {
-        @apply font-body text-sm text-gray-700;
+        @apply font-body text-sm;
     }
 
     button {

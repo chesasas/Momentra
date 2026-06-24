@@ -136,10 +136,55 @@
     </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="py-10 text-center text-gray-500 text-sm">
-    © 2026 Invitee. All rights reserved.
-</footer>
+    <div class="bg-white pt-48">
+    </div>
+
+<!-- FOOTER WRAPPER -->
+<div class="relative">
+    <!-- FLOATING CARD -->
+    <div class="absolute left-1/2 -translate-x-1/2 -top-44 z-20 w-[75%]">
+
+        <div class="bg-white rounded-xl shadow-2xl">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <!-- KIRI -->
+                <div class="p-6">
+                    <p class="text-primary tracking-widest mb-4">
+                        MOMENTRA
+                    </p>
+
+                    <h3 class="text-5xl font-cormorant mb-6">
+                        Buat Momen Spesialmu
+                    </h3>
+
+                    <p class="text-gray-600 mb-8">
+                        Undangan digital yang elegan,praktis, dan mudah dibagikan.
+                    </p>
+
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="px-6 py-3 bg-primary text-white rounded-xl">
+                            Buat Undangan
+                        </a>
+
+                        <a href="#"
+                            class="px-6 py-3 border rounded-xl">
+                            Lihat Contoh
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KANAN -->
+                <div class="h-full rounded-xl">
+                    <img src="{{ asset('images/hero-section.png') }}" class="w-full h-full object-cover rounded-e-xl">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="bg-primary pb-48">
+    </div>
+</div>
 
 <script id="w0s3f1">
     const navbar = document.getElementById('navbar');

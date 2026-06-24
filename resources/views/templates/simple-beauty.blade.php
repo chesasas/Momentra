@@ -52,9 +52,9 @@
             <h1 class="italic text-3xl">Undangan Pernikahan</h1>
             
             <div class="py-10">
-                <h1 class="text-7xl">{{ $order->nama_panggilan_laki }}</h1>
+                <h1 class="text-7xl uppercase">{{ $order->nama_panggilan_laki }}</h1>
                 <h1 class="text-7xl">&</h1>
-                <h1 class="text-7xl">{{ $order->nama_panggilan_perempuan }}</h1>
+                <h1 class="text-7xl uppercase">{{ $order->nama_panggilan_perempuan }}</h1>
             </div>
 
             <h1 class="text-2xl font-semibold">Kepada Bapak/Ibu/Saudara/i</h1>
@@ -77,7 +77,7 @@
 
 <div id="kontenUndangan" class="hidden">
     {{--===== SAVE THE DATE ====================--}}
-    <section class="relative bg-cover bg-center z-0" style="background-image: url('{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}')">
+    <section class="relative bg-cover bg-center z-0" style="background-image: url('{{ asset('storage/' . $order->foto_cover) }}')">
         <div class="absolute bg-white opacity-50 w-full h-screen z-0"></div>
         
         <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#f6f0eb] to-transparent z-10"></div>
@@ -160,7 +160,7 @@
     </section>
     
     {{--===== INFO ACARA ====================--}}
-    <section class="relative bg-cover bg-center z-0" style="background-image: url('{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}')">
+    <section class="relative bg-cover bg-center z-0" style="background-image: url('{{ asset('storage/' . $order->foto_acara) }}')">
         <div class="absolute bg-white opacity-50 w-full h-screen z-0"></div>
         
         <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#f6f0eb] to-transparent z-10"></div>
@@ -217,43 +217,52 @@
     </section>
 
     {{--===== BUKU TAMU ====================--}}
-    <section class="bg-white">
+    <section class="bg-white" id="buku-tamu">
         <div class="text-center h-screen flex justify-between">
             <div class="w-[50%] pt-20">
                 <h2 class="text-7xl text-[#a59681]">Buku Tamu</h2>
 
-                <div class="px-20 pt-10 text-left">
-                    <div class="pb-10">
-                        <label class="text-xl" for="nama_tamu">Nama (Name)</label>
-                        <input type="text" name="nama_tamu" class="w-full border-2 text-xl border-primary rounded-lg" required>
-                    </div>
-                    <div class="pb-10">
-                        <label class="text-xl" for="ucapan">Ucapan (Wishes)</label>
-                        <input type="text" name="ucapan" class="w-full border-2 text-xl border-primary rounded-lg" required>
-                    </div>
-                    <div class="pb-10">
-                        <p class="text-xl">Konfirmasi Kehadiran (Attendance)</p>
-                        <div class="flex flex-col gap-2">
-                            <div>
-                                <input type="radio" id="hadir" value="Hadir" name="kehadiran" class="p-0 rounded-full">
-                                <label for="hadir">Hadir</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="tidak" value="Tidak Hadir" name="kehadiran" class="p-0 rounded-full">
-                                <label for="tidak">Tidak Hadir</label>
+                <form action="{{ route('rsvp.store', $order->slug) }}" method="POST">
+                    @csrf
+                    <div class="px-20 pt-10 text-left">
+                        <div class="pb-10">
+                            <label class="text-xl" for="guest_name">Nama (Name)</label>
+                            <input type="text" name="guest_name" class="w-full border-2 text-xl border-primary rounded-lg" required>
+                        </div>
+                        <div class="pb-10">
+                            <label class="text-xl" for="message">Ucapan (Wishes)</label>
+                            <input type="text" name="message" class="w-full border-2 text-xl border-primary rounded-lg" required>
+                        </div>
+                        <div class="pb-10">
+                            <p class="text-xl">Konfirmasi Kehadiran (Attendance)</p>
+                            <div class="flex flex-col gap-2">
+                                <div>
+                                    <input type="radio" id="hadir" value="Hadir" name="attendance" class="p-0 rounded-full">
+                                    <label for="hadir">Hadir</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="tidak" value="Tidak Hadir" name="attendance" class="p-0 rounded-full">
+                                    <label for="tidak">Tidak Hadir</label>
+                                </div>
                             </div>
                         </div>
+                        <button type="submit" class="bg-primary text-white px-8 py-3 rounded-lg">
+                            Kirim RSVP
+                        </button>
+                        <div class="mt-8">
+                            @if(session('rsvp_success'))
+                                <div id="successAlert" class="mb-6 bg-green-100 border border-green-300 text-green-700 px-6 py-4 rounded-xl">
+                                    {{ session('rsvp_success') }}
+                                </div>
+                            @endif
+                        </div>
                     </div>
-                    <div class="pb-10">
-                        <label class="text-xl" for="nama_tamu">Jumlah yang Hadir (Total Attandence)</label>
-                        <input type="text" name="nama_tamu" class="w-full border-2 text-xl border-primary rounded-lg" required>
-                    </div>
-                </div>
+                </form>
             </div>
             <div class="w-[50%] h-full flex relative">
                 <div class="absolute left-0 top-0 w-32 h-screen bg-gradient-to-r from-white to-transparent z-10"></div>
 
-                <img src="{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}" alt="" class="object-cover w-full h-full">
+                <img src="{{ asset('storage/' . $order->foto_bukutamu) }}" alt="" class="object-cover w-full h-full">
             </div>
         </div>
     </section>
@@ -262,7 +271,7 @@
     <section class="bg-white">
         <div class="text-center h-screen flex justify-between">
             <div class="w-[50%] h-full flex relative">
-                <img src="{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}" alt="" class="object-cover w-full h-full">
+                <img src="{{ asset('storage/' . $order->foto_gift) }}" alt="" class="object-cover w-full h-full">
 
                 <div class="absolute right-0 top-0 w-32 h-screen bg-gradient-to-l from-white to-transparent z-10"></div>
             </div>
@@ -306,12 +315,40 @@
             </div>
         </div>
     </section>
+
+    <section>
+        <div>
+            @foreach($order->rsvps()->latest()->get() as $rsvp)
+            <div class="border-b border-primary/20 py-4">
+                <div class="flex items-center gap-2">
+                    <h3 class="font-semibold text-lg">{{ $rsvp->guest_name }}</h3>
+                    @if($rsvp->attendance === 'Hadir')
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+                            ✓ Hadir
+                        </span>
+                    @else
+                        <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium">
+                            ✕ Tidak Hadir
+                        </span>
+                    @endif
+                </div>
+
+                @if($rsvp->message)
+                    <p class="mt-2 text-gray-600">
+                        {{ $rsvp->message }}
+                    </p>
+                @endif
+            </div>
+            @endforeach
+        </div>
+    </section>
 </div>
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script>
+        // BUKA UNDANGAN
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault()
@@ -338,8 +375,21 @@
             })
         })
 
+        document.addEventListener('DOMContentLoaded', () => {
+            if (
+                localStorage.getItem(invitationKey) === 'true'
+            ) {
+                document.getElementById('kontenUndangan').classList.remove('hidden');
+                document.getElementById('btnPause').classList.remove('hidden');
+            }
+        });
+
+        const invitationKey = 'momentra-opened-{{ $order->slug }}';
+
         // PLAY LAGU & REVEAL ISI UNDANGAN
         function bukaUndangan() {
+            localStorage.setItem(invitationKey, 'true');
+
             const music = document.getElementById('bgMusic');
             music.play();
 

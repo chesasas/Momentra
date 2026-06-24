@@ -34,8 +34,7 @@
             @csrf
 
             <button
-                class="mt-8 bg-primary text-white px-8 py-4 rounded-xl"
-            >
+                class="mt-8 bg-primary text-white px-8 py-4 rounded-xl">
                 Bayar Sekarang
             </button>
 

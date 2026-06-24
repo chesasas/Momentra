@@ -22,6 +22,10 @@
                                 Data Acara
                             </a>
 
+                            <a href="#foto" id="link-acara" class="sidebar-link px-4 py-2 rounded-full bg-secondaryhover hover:bg-primary hover:text-white transition">
+                                Foto-foto
+                            </a>
+
                             <a href="#gift" id="link-gift" class="sidebar-link px-4 py-2 rounded-full bg-secondaryhover hover:bg-primary hover:text-white transition">
                                 Nomor Rekening
                             </a>
@@ -53,7 +57,7 @@
                     @endif
 
                     {{-- DATA MEMPELAI --}}
-                    <section id="mempelai" class="mb-20 scroll-mt-20">
+                    <section id="mempelai" class="mb-20 scroll-pt-20">
                         <h2 class="text-3xl font-bold mb-8">
                             Data Mempelai
                         </h2>
@@ -68,27 +72,29 @@
                                 <input type="text" name="nama_panggilan_laki" placeholder="Nama Panggilan" class="w-full border-0" required>
                                 <input type="text" name="nama_lengkap_laki" placeholder="Nama Lengkap" class="w-full border-0 mt-4" required>
                                 <input type="text" name="ayah_laki" placeholder="Nama Ayah" class="w-full border-0 mt-4" required>
-                                <input type="text" name="ibu_laki" placeholder="Nama Ibu" class="w-full border-0 mt-4" required>
-                                <input type="file" name="foto_laki" class="w-full border-0 mt-4" required>
+                                <input type="text" name="ibu_laki" placeholder="Nama Ibu" class="w-full border-0 my-4" required>
+                                <label for="foto_laki" class="text-lg">Foto Mempelai Pria</label>
+                                <input type="file" name="foto_laki" class="w-full border-0" required>
                             </div>
-
+                            
                             <!-- Wanita -->
                             <div>
                                 <h3 class="font-semibold mb-4">
                                     Mempelai Wanita
                                 </h3>
-
+                                
                                 <input type="text" name="nama_panggilan_perempuan" placeholder="Nama Panggilan" class="w-full border-0" required>
                                 <input type="text" name="nama_lengkap_perempuan" placeholder="Nama Lengkap" class="w-full border-0 mt-4" required>
                                 <input type="text" name="ayah_perempuan" placeholder="Nama Ayah" class="w-full border-0 mt-4" required>
-                                <input type="text" name="ibu_perempuan" placeholder="Nama Ibu" class="w-full mt-4" required>
-                                <input type="file" name="foto_perempuan" class="w-full mt-4" required>
+                                <input type="text" name="ibu_perempuan" placeholder="Nama Ibu" class="w-full my-4" required>
+                                <label for="foto_perempuan" class="text-lg">Foto Mempelai Perempuan</label>
+                                <input type="file" name="foto_perempuan" class="w-full" required>
                             </div>
                         </div>
                     </section>
 
                     {{-- DATA ACARA --}}
-                    <section id="acara" class="mb-20 scroll-mt-20">
+                    <section id="acara" class="mb-20 scroll-pt-20">
                         <h2 class="text-3xl font-bold mb-8">
                             Data Acara
                         </h2>
@@ -103,10 +109,25 @@
                         <input type="text" placeholder="Link Google Maps" name="google_maps" class="w-full border-0 mt-6" required>
                     </section>
 
-                    {{-- GIFT --}}
-                    <section id="gift" class="mb-20 scroll-mt-20">
+                    {{-- FOTO STATIS --}}
+                    <section id="foto" class="mb-20 scroll-pt-20">
                         <h2 class="text-3xl font-bold mb-8">
-                            Gift & Rekening
+                            Foto-foto
+                        </h2>
+                        <label class="text-lg font-semibold" for="foto_cover">Foto di bagian Cover (Awal Undangan)</label>
+                        <input type="file" name="foto_cover" class="w-full mb-4" required>
+                        <label class="text-lg font-semibold" for="foto_acara">Foto di bagian Tanggal Acara</label>
+                        <input type="file" name="foto_acara" class="w-full mb-4" required>
+                        <label class="text-lg font-semibold" for="foto_bukutamu">Foto di bagian Buku Tamu</label>
+                        <input type="file" name="foto_bukutamu" class="w-full mb-4" required>
+                        <label class="text-lg font-semibold" for="foto_gift">Foto di bagian Hadiah</label>
+                        <input type="file" name="foto_gift" class="w-full" required>
+                    </section>
+
+                    {{-- NOREK --}}
+                    <section id="gift" class="mb-20 scroll-pt-20">
+                        <h2 class="text-3xl font-bold mb-8">
+                            Nomor Rekening
                         </h2>
 
                         <div class="grid md:grid-cols-2 gap-10">
@@ -127,12 +148,12 @@
                     </section>
 
                     {{-- GALLERY --}}
-                    <section id="gallery" class="scroll-mt-28">
+                    <section id="gallery" class="scroll-pt-20">
                         <h2 class="text-xl font-semibold mb-4">
                             Photo Gallery
                         </h2>
 
-                        {{-- <input type="file" id="galleryInput" name="gallery[]" multiple accept="image/*" class="w-full" required> --}}
+                        <input type="file" id="galleryInput" name="gallery[]" multiple accept="image/*">
 
                         <p id="galleryCount" class="mt-2 text-sm text-gray-500">
                             0 / 12 Foto
@@ -141,7 +162,7 @@
                         <div id="galleryPreview" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6"></div>
                     </section>
                     
-                    <div>
+                    <div class="mt-8">
                         <button type="button" id="clearDraftBtn" class="bg-red-500 text-white px-6 py-3 rounded-xl">
                             Hapus Data
                         </button>
@@ -248,49 +269,53 @@
             }
         });
 
-        // UNTUK GALLERY
-        let selectedFiles = [];
+        // GALLERY
         const galleryInput = document.getElementById('galleryInput');
         const galleryPreview = document.getElementById('galleryPreview');
         const galleryCount = document.getElementById('galleryCount');
 
         galleryInput.addEventListener('change', function() {
-            const newFiles = Array.from(this.files);
-            if (
-                selectedFiles.length +
-                newFiles.length > 12
-            ) {
+
+            console.log('Jumlah file:', this.files.length);
+
+            for(let i = 0; i < this.files.length; i++) {
+                console.log(this.files[i].name);
+            }
+
+            galleryPreview.innerHTML = '';
+
+            const files = Array.from(this.files);
+
+            galleryCount.textContent =
+                `${files.length} / 12 Foto`;
+
+            if (files.length > 12) {
                 alert('Maksimal 12 foto');
+                this.value = '';
+                galleryPreview.innerHTML = '';
+                galleryCount.textContent = '0 / 12 Foto';
                 return;
             }
-            selectedFiles.push(...newFiles);
-            renderGallery();
-        });
 
-        function renderGallery() {
-            galleryPreview.innerHTML = '';
-            galleryCount.textContent = `${selectedFiles.length} / 12 Foto`;
+            files.forEach(file => {
 
-            selectedFiles.forEach((file, index) => {
                 const reader = new FileReader();
+
                 reader.onload = function(e) {
+
                     galleryPreview.innerHTML += `
-                        <div class="relative">
-                            <img src="${e.target.result}" class="w-full h-40 object-cover rounded-xl">
+                        <img
+                            src="${e.target.result}"
+                            class="w-full h-40 object-cover rounded-xl"
+                        >
+                    `;
 
-                            <button type="button" onclick="removePhoto(${index})" class="absolute top-2 right-2 bg-red-500 text-white px-2 rounded">
-                                ✕
-                            </button>
-                        </div>`;
                 };
-                reader.readAsDataURL(file);
-            });
-            updateSidebarProgress();
-        }
 
-        function removePhoto(index) {
-            selectedFiles.splice(index, 1);
-            renderGallery();
-        }
+                reader.readAsDataURL(file);
+
+            });
+
+        });
     </script>
 @endsection

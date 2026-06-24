@@ -28,34 +28,25 @@
                 </h1>
             </div>
             <div class="hidden md:flex gap-8 items-center">
-                <a href="/"
-                class="nav-link transition hover:text-primary
-                {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
+                <a href="/" class="nav-link transition hover:text-primary {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
                 Beranda
                 </a>
 
-                <a href="/templates"
-                class="nav-link transition hover:text-primary
-                {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
-                Templates
+                <a href="/templates" class="nav-link transition hover:text-primary {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
+                Template
                 </a>
 
-                <a href="/panduan"
-                class="nav-link transition hover:text-primary
-                {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
+                <a href="/panduan" class="nav-link transition hover:text-primary {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
                 Panduan
                 </a>
 
-                <a href="/tentangkami"
-                class="nav-link transition hover:text-primary
-                {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
+                <a href="/tentangkami" class="nav-link transition hover:text-primary {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
                 Tentang Kami
                 </a>
 
-                <p class="text-white">|</p>
-
-
                 @auth
+                <p class="nav-link transition {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">|</p>
+                
                 <div class="flex items-center gap-4">
 
                     <span class="{{ request()->is('/') ? 'text-white' : 'text-gray-800' }} nama">
@@ -67,6 +58,7 @@
 
                         <button type="submit"
                             class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             Logout
                         </button>
                     </form>
@@ -74,8 +66,9 @@
 
                 @else
                 <div class="flex items-center gap-4">
-                    <a href="/login" class="nav-link text-sm {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
-                    Login
+                    <a href="/login" class="nav-link transition hover:scale-105 {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        Login
                     </a>
 
                     <a href="/register" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primaryhover transition shadow">
@@ -90,8 +83,84 @@
     @yield('content')
 
     <!-- ================= FOOTER ================= -->
-    <footer class="py-10 text-center text-gray-500 text-sm">
-        © 2026 Invitee. All rights reserved.
+    <footer class="p-5 text-left text-white bg-primary">
+        <div class="flex justify-between gap-2 pb-4">
+            <div class="w-1/2 flex gap-1 items-center">
+                <img src="favicon-white.ico" alt="" class="w-16">
+                <h1 class="text-3xl">Momentra</h1>
+            </div>
+            <div class="w-1/4 pt-2">
+                <h1 class="text-3xl">Quick Links</h1>
+            </div>
+            <div class="w-1/4 pt-2">
+                <h1 class="text-3xl">Lihat Template</h1>
+            </div>
+        </div>
+        <div class="flex justify-between gap-2 items-start">
+            <div class="w-1/2">
+                <div>
+                    <p class="text-lg">Email: info@momentra.com</p>
+                </div>
+                <div class="flex gap-4 text-3xl pt-5">
+                    <a href="https://wa.me/6281775037615" target="_blank" class="hover:scale-110 transition ease-in-out">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="hover:scale-110 transition ease-in-out">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" class="hover:scale-110 transition ease-in-out">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+                <div class="pt-10">
+                    <button id="scrollTopBtn" class="px-3 py-2 bg-white rounded-lg hover:scale-105 transition text-sm text-black">
+                        Kembali ke Atas
+                        <i class="fa-solid fa-arrow-turn-up"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="w-1/4 flex flex-col gap-4 text-lg">
+                <a href="/" class="nav-link hover:underline">
+                Beranda
+                </a>
+                <a href="/templates" class="nav-link hover:underline">
+                Template
+                </a>
+                <a href="/panduan" class="nav-link hover:underline">
+                Panduan
+                </a>
+                <a href="/tentangkami" class="nav-link hover:underline">
+                Tentang Kami
+                </a>
+            </div>
+            <div class="w-1/4 flex flex-col gap-4 text-lg">
+                <a href="/templates/preview/balinese-elegant" class="nav-link hover:underline">
+                Balinese Elegant
+                </a>
+                <a href="/templates/preview/simple-beauty" class="nav-link hover:underline">
+                Simple Beauty
+                </a>
+                <a href="/templates/preview/romantic-floral" class="nav-link hover:underline">
+                Romantic Floral
+                </a>
+            </div>
+        </div>
+        <div class="text-center pt-8 italic text-gray-200">
+            <p>&copy 2026 Momentra. All Rights Reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
+
+<script>
+    document
+    .getElementById('scrollTopBtn')
+    .addEventListener('click', () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+    });
+</script>

@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RsvpController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
@@ -19,6 +20,8 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::get('/', function () {return view('beranda');});
+Route::get('/panduan', function () {return view('panduan');});
+Route::get('/tentangkami', function () {return view('tentangkami');});
 
 Route::get('/templates',                [TemplateController::class, 'index'])->name('templates.index');
 Route::get('/templates/preview/{slug}', [TemplateController::class, 'preview'])->name('templates.preview');
@@ -38,10 +41,7 @@ Route::middleware('auth.message')->group(function() {
 });
 
 Route::get('/undangan/{slug}', [OrderController::class, 'show'])->name('invitations.show');
-
-Route::get('/panduan', function () {return view('panduan');});
-
-Route::get('/tentangkami', function () {return view('tentangkami');});
+Route::post('/invitation/{slug}/rsvp', [RsvpController::class, 'store'])->name('rsvp.store');
 
 // LOGOUT
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth')->name('logout');

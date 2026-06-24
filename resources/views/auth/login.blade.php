@@ -9,7 +9,6 @@
             </div>
         @endif
         <div class="flex justify-center items-center mx-auto mb-4">
-            a
             <h1 class="text-3xl font-bold">
                 Momentra
             </h1>

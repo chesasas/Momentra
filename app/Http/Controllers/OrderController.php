@@ -59,10 +59,10 @@ class OrderController extends Controller
             'foto_laki' => 'required|image|max:5120',
             'foto_perempuan' => 'required|image|max:5120',
 
-            'foto_cover' => 'nullable|image|max:4096',
-            'foto_acara' => 'nullable|image|max:4096',
-            'foto_bukutamu' => 'nullable|image|max:4096',
-            'foto_gift' => 'nullable|image|max:4096',
+            'foto_cover' => 'required|image|max:4096',
+            'foto_acara' => 'required|image|max:4096',
+            'foto_bukutamu' => 'required|image|max:4096',
+            'foto_gift' => 'required|image|max:4096',
 
             // GALLERY
             'gallery' => 'nullable|array|max:30',
@@ -128,7 +128,7 @@ class OrderController extends Controller
 
         $order->status = 'published';
 
-        $order->slug = Str::slug($order->nama_panggilan_laki . '-' . $order->nama_panggilan_perempuan);
+        $order->slug = Str::slug($order->nama_panggilan_laki . '&' . $order->nama_panggilan_perempuan);
         $order->save();
 
         return redirect()->route('orders.success', $order);

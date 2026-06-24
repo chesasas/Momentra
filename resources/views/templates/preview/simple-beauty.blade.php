@@ -39,6 +39,10 @@
             font-weight: 200;
         }
     </style>
+
+    <!-- PAUSE BUTTON -->
+    <a href="#" class="hidden fixed bottom-5 right-5 text-4xl z-30" id="PauseBtn" onclick="togglePause()">⏸️</a>
+    
     <nav id="navbar" class="w-full z-50 transition-all duration-300 {{ request()->is('/') ? 'bg-transparent' : 'bg-white shadow' }}">
         <div class="mx-auto px-8 py-4 flex justify-between items-center">
             <h3 id="logo" class="text-2xl font-bold transition text-gray-800">
@@ -63,8 +67,8 @@
     {{--===== COVER ====================--}}
     <section>
         <div class="relative text-center h-screen py-20 flex flex-col justify-center">
-            <img src="{{ asset('images/templates/simple-beauty/all.png') }}" alt="" class="absolute -left-36 top-5 h-[90%]">
-            <img src="{{ asset('images/templates/simple-beauty/all.png') }}" alt="" class="absolute rotate-180 -right-36 top-5 h-[90%]">
+            <img src="{{ asset('images/templates/simple-beauty/all.png') }}" alt="" class="absolute -left-36 top-5 h-[90%] opacity-40">
+            <img src="{{ asset('images/templates/simple-beauty/all.png') }}" alt="" class="absolute rotate-180 -right-36 top-5 h-[90%] opacity-40">
 
             <h1 class="italic text-3xl">Undangan Pernikahan</h1>
             
@@ -79,23 +83,39 @@
             <h1 class="max-w-md mx-auto text-2xl font-semibold">Mohon maaf apabila ada kesalahan dalam penulisan nama atau gelar.</h1>
 
             <div class="my-8">
-                <a href="#undangan" class="font-['Cormorant_Garamond'] inline-block py-2 px-4 text-xl bg-white rounded-full font-light hover:scale-105 transition duration-200">
+                <a href="#undangan" onclick="bukaUndangan()" class="font-['Cormorant_Garamond'] inline-block py-2 px-4 text-xl bg-white rounded-full font-light hover:scale-105 transition duration-200">
                     <i class="fa-regular fa-envelope"></i>
                     Buka Undangan
                 </a>
+
+                {{-- AUDIO --}}
+                <audio id="bgMusic" loop>
+                    <source src="{{ asset('storage/music/Perfect - Ed Sheeran.mp3') }}" type="audio/mpeg">
+                </audio>
             </div>
         </div>
     </section>
 
+<div id="kontenUndangan" class="hidden">
     {{--===== SAVE THE DATE ====================--}}
     <section class="relative bg-cover bg-center" style="background-image: url('{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}')">
-        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 h-[50%] z-10">
-        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 h-[50%] z-10">
-
-        <div class="absolute top-0 left-0 w-full h-60 bg-gradient-to-b from-[#f6f0eb] to-transparent z-0"></div>
-        <div class="absolute bottom-0 left-0 w-full h-60 bg-gradient-to-t from-[#f6f0eb] to-transparent z-0"></div>
+        <div class="absolute bg-white opacity-50 w-full h-screen z-0"></div>
+        
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#f6f0eb] to-transparent z-10"></div>
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#f6f0eb] to-transparent z-10"></div>
+        
+        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 h-[50%] opacity-40 z-20">
+        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 h-[50%] opacity-40 z-20">
 
         <div id="undangan" class="max-w-5xl mx-auto text-center h-screen py-20 flex justify-between items-center">
+            <div class="w-[55%] z-20">
+                <h1 class="text-3xl">Save The Date</h1>
+                
+                {{-- COUNTDOWN --}}
+                <div class="w-full flex justify-center font-semibold">
+                    <div id="countdown" class="sm:text-2xl md:text-3xl lg:text-4xl"></div>
+                </div>
+            </div>
             <div class="w-[45%] z-20">
                 <h1 class="text-3xl">PERNIKAHAN</h1>
                 <div class="py-16">
@@ -104,19 +124,13 @@
                     <h2 class="text-9xl">Clara</h2>
                 </div>
             </div>
-            <div class="w-[55%] z-20">
-                <h1 class="text-3xl">Save The Date</h1>
-                <div>
-
-                </div>
-            </div>
         </div>
     </section>
 
     {{--===== LAKIK ====================--}}
     <section class="relative">
-        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 h-[60%]">
-        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 h-[60%]">
+        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 opacity-40 h-[60%]">
+        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 opacity-40 h-[60%]">
 
         <div class="max-w-4xl mx-auto text-center h-[75vh] py-4 flex justify-between items-center">
             <div class="w-[50%] h-full flex justify-center items-center">
@@ -146,8 +160,8 @@
 
     {{--===== PEREMPUAN ====================--}}
     <section class="relative">
-        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 h-[60%]">
-        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 h-[60%]">
+        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 opacity-40 h-[60%]">
+        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 opacity-40 h-[60%]">
 
         <div class="max-w-4xl mx-auto text-center h-[75vh] py-4 flex justify-between items-center">
             <div class="w-[50%] flex flex-col gap-6">
@@ -168,11 +182,13 @@
     
     {{--===== INFO ACARA ====================--}}
     <section class="relative bg-cover bg-center" style="background-image: url('{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}')">
-        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 h-[50%] z-20">
-        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 h-[50%] z-20">
-
-        <div class="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-[#f6f0eb] to-transparent z-0"></div>
-        <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#f6f0eb] to-transparent z-0"></div>
+        <div class="absolute bg-white opacity-50 w-full h-screen z-0"></div>
+        
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#f6f0eb] to-transparent z-10"></div>
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#f6f0eb] to-transparent z-10"></div>
+        
+        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 h-[50%] opacity-40 z-20">
+        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 h-[50%] opacity-40 z-20">
         
         <div class="text-center h-screen py-20 flex flex-col">
             <h2 class="text-7xl pb-8 z-20">Acara Kami</h2>
@@ -228,6 +244,33 @@
             <div class="w-[50%] pt-20">
                 <h2 class="text-7xl text-[#a59681]">Buku Tamu</h2>
 
+                <div class="px-20 pt-10 text-left">
+                    <div class="pb-10">
+                        <label class="text-xl" for="nama_tamu">Nama (Name)</label>
+                        <input type="text" name="nama_tamu" class="w-full border-2 text-xl border-primary rounded-lg" required>
+                    </div>
+                    <div class="pb-10">
+                        <label class="text-xl" for="ucapan">Ucapan (Wishes)</label>
+                        <input type="text" name="ucapan" class="w-full border-2 text-xl border-primary rounded-lg" required>
+                    </div>
+                    <div class="pb-10">
+                        <p class="text-xl">Konfirmasi Kehadiran (Attendance)</p>
+                        <div class="flex flex-col gap-2">
+                            <div>
+                                <input type="radio" id="hadir" value="Hadir" name="kehadiran" class="p-0 rounded-full">
+                                <label for="hadir">Hadir</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="tidak" value="Tidak Hadir" name="kehadiran" class="p-0 rounded-full">
+                                <label for="tidak">Tidak Hadir</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-10">
+                        <label class="text-xl" for="nama_tamu">Jumlah yang Hadir (Total Attandence)</label>
+                        <input type="text" name="nama_tamu" class="w-full border-2 text-xl border-primary rounded-lg" required>
+                    </div>
+                </div>
             </div>
             <div class="w-[50%] h-full flex relative">
                 <div class="absolute left-0 top-0 w-32 h-screen bg-gradient-to-r from-white to-transparent z-10"></div>
@@ -285,7 +328,7 @@
             </div>
         </div>
     </section>
-
+</div>
 
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -313,6 +356,58 @@
                 requestAnimationFrame(scroll)
             })
         })
+
+        // PLAY LAGU & REVEAL ISI UNDANGAN
+        function bukaUndangan() {
+            const music = document.getElementById('bgMusic');
+            music.play();
+
+            // Tampilkan konten undangan
+            document.getElementById('kontenUndangan').classList.remove('hidden');
+
+            // Tampilkan tombol pause
+            document.getElementById('PauseBtn').classList.remove('hidden');
+
+            // Scroll ke section undangan
+            setTimeout(() => {
+                document.getElementById('undangan').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        // BUTTON PAUSE
+        function togglePause() {
+            const music = document.getElementById('bgMusic');
+            const btn = document.getElementById('PauseBtn');
+
+            if (music.paused) {
+                music.play();
+                btn.textContent = '⏸️';
+            } else {
+                music.pause();
+                btn.textContent = '▶️';
+            }
+        }
+
+        // COUNTDOWN
+        $(document).ready(function() {
+            var tanggal = new Date("July 1, 2026 08:50:00").getTime();
+
+            setInterval(function() {
+                var today = new Date().getTime();
+                var diff = tanggal - today;
+
+                if (diff > 0) {
+                    var hari = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    var jam = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var menit = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    var detik = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    $("#countdown").text(hari + "h • " + jam + "j • " + menit + "m • " + detik + "d");
+                } else {
+                    $("#countdown").text("Event Telah Berlangsung!");
+                }
+            }, 1000);
+        });
     </script>
 </body>
 </html>
