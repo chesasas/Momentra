@@ -56,7 +56,8 @@
                 <form action="{{ route('templates.use', $template->slug) }}" method="POST">
                     @csrf
 
-                    <button type="submit" class="inline-block font-['Montserrat'] font-semibold bg-primary hover:bg-primaryhover text-white px-4 py-3 rounded-lg transition">
+                    <button type="submit" class="inline-block font-['Montserrat'] font-semibold bg-primary hover:bg-primaryhover text-white px-3 py-2 rounded-lg transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
                         Gunakan Template
                     </button>
                 </form>

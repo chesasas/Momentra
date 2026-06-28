@@ -86,7 +86,7 @@
     <footer class="p-5 text-left text-white bg-primary">
         <div class="flex justify-between gap-2 pb-4">
             <div class="w-1/2 flex gap-1 items-center">
-                <img src="favicon-white.ico" alt="" class="w-16">
+                <img src="{{ asset('white-logo.png') }}" alt="" class="w-16">
                 <h1 class="text-3xl">Momentra</h1>
             </div>
             <div class="w-1/4 pt-2">

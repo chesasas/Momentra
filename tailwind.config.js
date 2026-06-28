@@ -18,6 +18,9 @@ export default {
                 secondaryhover: '#E5E1D4',
                 white: '#FDFDFD',
                 black: '#1B1B1B',
+                success:'#349012',
+                warning:'#fb923c',
+                danger:'#FF5858',
             },
             fontFamily: {
                 heading: ['Montserrat', 'sans-serif'],

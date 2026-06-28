@@ -18,7 +18,8 @@
                 <p class="mb-10 mr-10 text-white">
                     Dirancang dengan detail dan sentuhan elegan untuk membuat setiap momen pernikahanmu lebih berkesan.
                 </p>
-                <a href="templates/" class="bg-primary font-bold px-6 py-3 rounded-lg hover:bg-primaryhover transition">
+                <a href="templates/" class="bg-primary font-bold px-4 py-3 rounded-lg hover:bg-primaryhover transition">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
                     PESAN SEKARANG
                 </a>
             </div>
@@ -40,6 +41,7 @@
     <div class="mt-4 mb-6">
         <a href="templates/" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primaryhover transition shadow-lg">
             Lihat Detail
+            <i class="fa-solid fa-arrow-right"></i>
         </a>
     </div>
 
@@ -78,6 +80,7 @@
             <div class="mt-6 pb-2 text-left">
                 <a href="tentangkami/" class="bg-primary text-white px-4 py-3 rounded-lg hover:bg-primaryhover transition shadow-lg">
                     Lihat Selengkapnya
+                    <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
         </div>

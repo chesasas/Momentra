@@ -78,9 +78,13 @@
             </div>
             <div class="text-justify">
                 <h1 class="text-3xl font-bold my-3">Butuh Bantuan?</h1>
-                <p class="text-black text-md">
+                <p class="text-black text-md mb-4">
                     Tenang, kami siap membantu kapan saja. Jika mengalami kendala atau memiliki pertanyaan selama proses pembuatan undangan digital, silakan hubungi tim kami melalui kontak yang sudah tersedia. Kami akan dengan senang hati membantu Anda agar proses pembuatan undangan berjalan lebih mudah dan nyaman.
                 </p>
+                <a href="https://wa.me/6281775037615?text=Halo kak, saya perlu bantuan..." class="bg-primary text-white px-3 py-2 rounded-lg hover:bg-primaryhover transition shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Hubungi Kami
+                </a>
             </div>
         </div>
     </div>

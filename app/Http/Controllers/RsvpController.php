@@ -28,6 +28,7 @@ class RsvpController extends Controller {
         return redirect()
         ->route('invitations.show', $order->slug)
         ->with('rsvp_success', 'Terima kasih atas konfirmasinya...')
+        ->with('opened', true)
         ->withFragment('buku-tamu');
     }
 }

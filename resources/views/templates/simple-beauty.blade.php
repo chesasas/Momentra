@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Momentra</title>
+    <title class="capital">Momentra | {{ $order->nama_panggilan_laki }} & {{ $order->nama_panggilan_perempuan }}</title>
     <link rel="icon" href="/favicon.ico">
 
     {{-- Font Icon Awesome --}}
@@ -69,7 +69,7 @@
 
                 {{-- AUDIO --}}
                 <audio id="bgMusic" loop>
-                    <source src="{{ asset('storage/music/Perfect - Ed Sheeran.mp3') }}" type="audio/mpeg">
+                    <source src="{{ asset('storage/music/Beautiful In White - Shane Filan.mp3') }}" type="audio/mpeg">
                 </audio>
             </div>
         </div>
@@ -316,8 +316,11 @@
         </div>
     </section>
 
-    <section>
-        <div>
+    <section class="max-w-7xl mx-auto mt-10">
+        <div class="rounded-lg bg-white p-4">
+            <h1 class="font-semibold">Attandence Comments</h1>
+            <hr class="border-black">
+
             @foreach($order->rsvps()->latest()->get() as $rsvp)
             <div class="border-b border-primary/20 py-4">
                 <div class="flex items-center gap-2">
@@ -375,10 +378,19 @@
             })
         })
 
+        // @if(session('opened'))
+        //     document.addEventListener('DOMContentLoaded', () => {
+        //         document.getElementById('kontenUndangan').classList.remove('hidden');
+        //         document.getElementById('btnPause').classList.remove('hidden');
+        //         const music = document.getElementById('bgMusic');
+        //         music.play();
+        //     });
+        // @endif
+
         document.addEventListener('DOMContentLoaded', () => {
-            if (
-                localStorage.getItem(invitationKey) === 'true'
-            ) {
+            if(
+                localStorage.getItem(invitationKey) === 'true' ) 
+            {
                 document.getElementById('kontenUndangan').classList.remove('hidden');
                 document.getElementById('btnPause').classList.remove('hidden');
             }

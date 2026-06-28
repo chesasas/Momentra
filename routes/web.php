@@ -37,7 +37,7 @@ Route::middleware('auth.message')->group(function() {
     Route::put('/orders/{order}/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
     // PEMBAYARAN
     Route::get('/orders/{order}/pembayaran', [OrderController::class, 'pembayaran'])->name('orders.pembayaran');
-    Route::get('/order/{order}/success', [OrderController::class, 'success'])->name('orders.success');
+    Route::post('/order/{order}/success', [OrderController::class, 'success'])->name('orders.success');
 });
 
 Route::get('/undangan/{slug}', [OrderController::class, 'show'])->name('invitations.show');

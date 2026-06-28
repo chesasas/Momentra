@@ -89,10 +89,10 @@
 </section>
 
 <!-- ================= PERTANYAAN ================= -->
-<section class="pt-32 text-center">
+<section class="pt-32 pb-20 text-center">
     <h1 class="text-3xl font-bold">Ada Pertanyaan?</h1>
     <p class="max-w-3xl mx-auto my-16">Jangan ragu untuk menghubungi kami. Apakah Anda butuh bantuan teknis, ingin konsultasi tentang desain, atau sekadar ingin tahu lebih lanjut tentang Momentra, kami siap membantu.</p>
-    <a href="https://wa.me/6281775037615?text=Halo kak, saya mau bertanya..." class="bg-primary text-white px-4 py-3 rounded-lg hover:bg-primaryhover transition shadow-lg">
+    <a href="https://wa.me/6281775037615?text=Halo kak, saya mau bertanya..." class="bg-primary text-white px-3 py-2 rounded-lg hover:bg-primaryhover transition shadow-lg">
         <i class="fa-brands fa-whatsapp text-xl"></i>
         Hubungi Kami
     </a>

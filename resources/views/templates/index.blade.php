@@ -36,7 +36,8 @@
                         </span>
 
                         <span class="text-primary font-medium">
-                            Lihat Template →
+                            Lihat Template
+                            <i class="fa-solid fa-arrow-right"></i>
                         </span>
                     </div>
                 </div>
