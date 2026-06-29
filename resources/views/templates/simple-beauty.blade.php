@@ -33,7 +33,7 @@
             font-weight: 200;
         }
         
-        h2 {
+        h2,h6 {
             font-family: "Alex Brush", serif !important;
             color: #435564;
             font-weight: 200;
@@ -52,9 +52,9 @@
             <h1 class="italic text-3xl">Undangan Pernikahan</h1>
             
             <div class="py-10">
-                <h1 class="text-7xl uppercase">{{ $order->nama_panggilan_laki }}</h1>
-                <h1 class="text-7xl">&</h1>
-                <h1 class="text-7xl uppercase">{{ $order->nama_panggilan_perempuan }}</h1>
+                <h2 class="text-8xl">{{ $order->nama_panggilan_laki }}</h2>
+                <h1 class="text-5xl my-2">&</h1>
+                <h2 class="text-8xl">{{ $order->nama_panggilan_perempuan }}</h2>
             </div>
 
             <h1 class="text-2xl font-semibold">Kepada Bapak/Ibu/Saudara/i</h1>
@@ -88,19 +88,49 @@
 
         <div id="undangan" class="max-w-5xl mx-auto text-center h-screen py-20 flex justify-between items-center">
             <div class="w-[55%] z-20">
-                <h1 class="text-3xl font-bold">Save The Date</h1>
+                <h1 class="text-3xl font-bold mb-4">Save The Date</h1>
 
                 {{-- COUNTDOWN --}}
                 <div class="w-full flex justify-center font-semibold">
-                    <div id="countdown" class="sm:text-2xl md:text-3xl lg:text-4xl"></div>
+
+                    <div id="countdown" class="flex justify-center gap-4 flex-wrap">
+                        <div class="w-24 h-24 border-2 border-[#435564] rounded-2xl backdrop-blur flex flex-col justify-center items-center shadow-lg">
+                            <span id="days" class="text-3xl font-bold text-[#435564] mb-2">0</span>
+                            <span class="text-sm uppercase tracking-widest text-gray-600">
+                                Hari
+                            </span>
+                        </div>
+
+                        <div class="w-24 h-24 border-2 border-[#435564] rounded-2xl backdrop-blur flex flex-col justify-center items-center shadow-lg">
+                            <span id="hours" class="text-3xl font-bold text-[#435564] mb-2">0</span>
+                            <span class="text-sm uppercase tracking-widest text-gray-600">
+                                Jam
+                            </span>
+                        </div>
+
+                        <div class="w-24 h-24 border-2 border-[#435564] rounded-2xl backdrop-blur flex flex-col justify-center items-center shadow-lg">
+                            <span id="minutes" class="text-3xl font-bold text-[#435564] mb-2">0</span>
+                            <span class="text-sm uppercase tracking-widest text-gray-600">
+                                Menit
+                            </span>
+                        </div>
+
+                        <div class="w-24 h-24 border-2 border-[#435564] rounded-2xl backdrop-blur flex flex-col justify-center items-center shadow-lg">
+                            <span id="seconds" class="text-3xl font-bold text-[#435564] mb-2">0</span>
+                            <span class="text-sm uppercase tracking-widest text-gray-600">
+                                Detik
+                            </span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="w-[45%] z-20">
                 <h1 class="text-3xl font-semibold">PERNIKAHAN</h1>
                 <div class="py-16">
-                    <h2 class="text-9xl">{{ $order->nama_panggilan_laki }}</h2>
+                    <h2 class="text-8xl">{{ $order->nama_panggilan_laki }}</h2>
                     <h1 class="text-5xl">&</h1>
-                    <h2 class="text-9xl">{{ $order->nama_panggilan_perempuan }}</h2>
+                    <h2 class="text-8xl">{{ $order->nama_panggilan_perempuan }}</h2>
                 </div>
             </div>
         </div>
@@ -116,7 +146,7 @@
                 <img src="{{ asset('storage/' . $order->foto_laki) }}" alt="" class="object-cover w-[85%] h-full rounded-full">
             </div>
             <div class="w-[50%] flex flex-col gap-6">
-                <h2 class="text-9xl text-[#a59681]">{{ $order->nama_panggilan_laki }}</h2>
+                <h2 class="text-9xl">{{ $order->nama_panggilan_laki }}</h2>
                 <h1 class="text-3xl font-semibold">{{ $order->nama_lengkap_laki }}</h1>
                 <h1 class="text-3xl italic">Putra dari pasangan</h1>
                 <div>
@@ -144,7 +174,7 @@
 
         <div class="max-w-4xl mx-auto text-center h-[75vh] py-4 flex justify-between items-center">
             <div class="w-[50%] flex flex-col gap-6">
-                <h2 class="text-9xl text-[#a59681]">{{ $order->nama_panggilan_perempuan }}</h2>
+                <h2 class="text-9xl">{{ $order->nama_panggilan_perempuan }}</h2>
                 <h1 class="text-3xl font-semibold">{{ $order->nama_lengkap_perempuan }}</h1>
                 <h1 class="text-3xl italic">Putri dari pasangan</h1>
                 <div>
@@ -170,22 +200,18 @@
         <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 h-[50%] opacity-40 z-20">
         
         <div class="text-center h-screen py-20 flex flex-col z-20">
-            <h2 class="text-7xl pb-8 z-20">Acara Kami</h2>
+            <h2 class="text-7xl pb-4 z-20">Acara Kami</h2>
             
-            <div class="flex justify-center gap-8 z-20">
-                <div class="w-1/2 text-end flex flex-col gap-4 justify-center">
-                    <h1 class="text-2xl font-semibold">Sabtu,</h1>
-                    <h1 class="text-2xl font-semibold">20 Juni 2026</h1>
-                    <h1 class="text-2xl">18.00 WITA s/d Selesai</h1>
-                </div>
-                <div class="w-1/2 text-start flex flex-col gap-4 justify-center">
-                    <h1 class="text-2xl font-semibold">The Stone Hotel</h1>
-                    <h1 class="text-2xl">Legian Bali</h1>
+            <div class="items-center z-20">
+                <div class="w-full text-center gap-4">
+                    <h1 class="text-2xl font-semibold mb-2">{{ $order->location }}</h1>
+                    <h1 class="text-2xl font-semibold mb-2">{{ $order->tanggal->translatedFormat('l, d F Y') }}</h1>
+                    <h1 class="text-2xl font-semibold">{{ \Carbon\Carbon::parse($order->jam_mulai)->format('H:i') }} WITA s/d {{ \Carbon\Carbon::parse($order->jam_selesai)->format('H:i') }} WITA</h1>
                 </div>
             </div>
 
             <div class="my-8 z-20">
-                <a href="#undangan" class="font-['Cormorant_Garamond'] inline-block py-2 px-4 text-lg bg-white rounded-full font-light hover:scale-105 transition duration-200 z-30">
+                <a href="{{ $order->google_maps }}" target="_blank" class="font-['Cormorant_Garamond'] inline-block py-2 px-4 text-lg bg-white rounded-full font-light hover:scale-105 transition duration-200 z-30">
                     <i class="fa-solid fa-location-dot"></i>
                     Lihat Lokasi
                 </a>
@@ -195,13 +221,51 @@
     
     {{--===== GALLERY ====================--}}
     <section>
-        <div class="relative text-center h-screen py-10 flex flex-col">
+        <div class="relative text-center pt-10 flex flex-col">
             <h2 class="text-6xl pb-8">Wedding Gallery</h2>
 
-            <div>
+            <section id="gallery">
+                <div class="flex flex-wrap justify-center gap-4 mx-8">
+                    @forelse($order->galleryPhotos as $index => $photo)
+
+                        <img src="{{ asset('storage/'.$photo->file_path) }}" data-index="{{ $index }}" class="gallery-image cursor-pointer w-80 h-60 object-cover rounded-xl hover:scale-105 transition duration-300">
+
+                    @empty
+
+                        <p class="col-span-full text-center text-gray-500">
+                            Belum ada foto gallery.
+                        </p>
+
+                    @endforelse
+                </div>
+            </section>
+
+            <div id="galleryModal" class="fixed inset-0 bg-black/70 backdrop-blur-md opacity-0 invisible transition-all duration-300 flex justify-center items-center z-[999]">
+                <!-- Close -->
+                <button id="closeGallery" class="absolute top-8 right-8 text-white text-4xl">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+
+                <!-- Prev -->
+                <button id="prevImage" class="absolute left-10 p-4 text-white text-3xl">
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+
+                <!-- Image -->
+                <img id="modalImage" class="max-w-[90%] max-h-[90vh] rounded-xl transition-all duration-500 ease-in-out opacity-100 translate-x-0 scale-100 select-none">
+
+                <!-- Next -->
+                <button id="nextImage" class="absolute right-10 p-4 text-white text-3xl">
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
+
+                <!-- Counter -->
+                <div id="galleryCounter" class="absolute bottom-8 text-white">
+                    1 / 10
+                </div>
             </div>
 
-            <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white to-transparent z-10"></div>
+            <div class="w-full h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
         </div>
     </section>
 
@@ -432,24 +496,230 @@
         }
 
         // COUNTDOWN
-        $(document).ready(function() {
-            var tanggal = new Date("July 1, 2026 08:50:00").getTime();
+        $(document).ready(function () {
 
-            setInterval(function() {
-                var today = new Date().getTime();
-                var diff = tanggal - today;
+            const eventDate = new Date("July 1, 2026 08:50:00").getTime();
 
-                if (diff > 0) {
-                    var hari = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    var jam = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var menit = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    var detik = Math.floor((diff % (1000 * 60)) / 1000);
+            const countdown = setInterval(function () {
 
-                    $("#countdown").text(hari + "h • " + jam + "j • " + menit + "m • " + detik + "d");
-                } else {
-                    $("#countdown").text("Event Telah Berlangsung!");
+                const now = new Date().getTime();
+
+                const diff = eventDate - now;
+
+                if (diff <= 0) {
+
+                    clearInterval(countdown);
+
+                    $('#countdown').html(`
+                        <div class="text-3xl font-semibold text-primary">
+                            🎉 Acara Telah Berlangsung
+                        </div>
+                    `);
+
+                    return;
                 }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+                const hours = Math.floor(
+                    (diff % (1000 * 60 * 60 * 24)) /
+                    (1000 * 60 * 60)
+                );
+
+                const minutes = Math.floor(
+                    (diff % (1000 * 60 * 60)) /
+                    (1000 * 60)
+                );
+
+                const seconds = Math.floor(
+                    (diff % (1000 * 60)) /
+                    1000
+                );
+
+                $('#days').text(days);
+                $('#hours').text(hours);
+                $('#minutes').text(minutes);
+                $('#seconds').text(seconds);
+
             }, 1000);
+
+        });
+
+        // GALLERY SLIDER
+        const modal = document.getElementById('galleryModal');
+        const modalImage = document.getElementById('modalImage');
+        const galleryCounter = document.getElementById('galleryCounter');
+
+        const galleryImages = document.querySelectorAll('.gallery-image');
+
+        let currentIndex = 0;
+
+        // OPEN MODAL
+        function openModal() {
+
+            document.body.style.overflow = 'hidden';
+
+            modal.classList.remove('invisible');
+
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+
+                modalImage.classList.remove('opacity-0', 'scale-95');
+                modalImage.classList.add('opacity-100', 'scale-100');
+            });
+
+        }
+
+        // CLOSE MODAL
+        function closeModal() {
+
+            modal.classList.add('opacity-0');
+
+            modalImage.classList.remove('opacity-100', 'scale-100');
+            modalImage.classList.add('opacity-0', 'scale-95');
+
+            setTimeout(() => {
+
+                modal.classList.add('invisible');
+                document.body.style.overflow = '';
+
+            }, 300);
+
+        }
+
+        function animateTo(index, direction){
+
+            // keluar
+            modalImage.classList.add('opacity-0', direction === 'next' ? '-translate-x-16' : 'translate-x-16');
+
+            setTimeout(()=>{
+                currentIndex = index;
+
+                modalImage.src = galleryImages[index].src;
+
+                galleryCounter.innerHTML =
+                    `${index+1} / ${galleryImages.length}`;
+
+                // reset posisi
+                modalImage.classList.remove(
+                    '-translate-x-16',
+                    'translate-x-16'
+                );
+
+                modalImage.classList.add(
+                    direction === 'next'
+                        ? 'translate-x-16'
+                        : '-translate-x-16'
+                );
+
+                requestAnimationFrame(()=>{
+                    modalImage.classList.remove(
+                        'opacity-0',
+                        'translate-x-16',
+                        '-translate-x-16'
+                    );
+                });
+            },250);
+        }
+
+        // SHOW IMAGE
+        function showImage(index){
+            currentIndex = index;
+            openModal();
+            modalImage.src = galleryImages[index].src;
+            galleryCounter.innerHTML = `${index+1} / ${galleryImages.length}`;
+        }
+
+        // CLICK IMAGE
+        galleryImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                showImage(index);
+            });
+        });
+
+        // NEXT
+        nextImage.addEventListener('click',()=>{
+            let next = currentIndex + 1;
+            if(next >= galleryImages.length){
+                next = 0;
+            }
+
+            animateTo(next,'next');
+        });
+
+        // PREVIOUS
+        prevImage.addEventListener('click',()=>{
+            let prev = currentIndex - 1;
+            if(prev < 0){
+                prev = galleryImages.length-1;
+            }
+
+            animateTo(prev,'prev');
+        });
+
+        // CLOSE BUTTON
+        document.getElementById('closeGallery')
+        .addEventListener('click', closeModal);
+
+        // CLICK BACKGROUND
+        modal.addEventListener('click', (e) => {
+
+            if (e.target === modal) {
+                closeModal();
+            }
+
+        });
+
+        // KEYBOARD
+        document.addEventListener('keydown', (e) => {
+
+            if (modal.classList.contains('invisible')) return;
+
+            if (e.key === 'Escape') {
+
+                closeModal();
+
+            }
+
+            if (e.key === 'ArrowRight') {
+
+                document.getElementById('nextImage').click();
+
+            }
+
+            if (e.key === 'ArrowLeft') {
+
+                document.getElementById('prevImage').click();
+
+            }
+
+        });
+
+        // SWIPE MOBILE
+        let touchStartX = 0;
+
+        modal.addEventListener('touchstart', (e) => {
+
+            touchStartX = e.changedTouches[0].screenX;
+
+        });
+
+        modal.addEventListener('touchend', (e) => {
+
+            const touchEndX = e.changedTouches[0].screenX;
+
+            if (touchStartX - touchEndX > 50) {
+
+                document.getElementById('nextImage').click();
+
+            }
+
+            if (touchEndX - touchStartX > 50) {
+
+                document.getElementById('prevImage').click();
+
+            }
+
         });
     </script>
 </body>

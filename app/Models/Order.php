@@ -73,7 +73,7 @@ class Order extends Model
 
     public function galleryPhotos()
     {
-        return $this->hasMany(GalleryPhoto::class);
+        return $this->hasMany(GalleryPhoto::class)->orderBy('sort_order');
     }
 
     public function payment()

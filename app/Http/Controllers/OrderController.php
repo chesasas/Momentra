@@ -51,22 +51,22 @@ class OrderController extends Controller
             'norek_bank1' => 'required|string|max:50',
             'atasnama_bank1' => 'required|string|max:100',
 
-            'bank2' => 'required|string|max:50',
-            'norek_bank2' => 'required|string|max:50',
-            'atasnama_bank2' => 'required|string|max:100',
+            'bank2' => 'nullable|string|max:50',
+            'norek_bank2' => 'nullable|string|max:50',
+            'atasnama_bank2' => 'nullable|string|max:100',
 
             // FOTO
-            'foto_laki' => 'required|image|max:10240',
-            'foto_perempuan' => 'required|image|max:10240',
+            'foto_laki' => 'required|image|max:20480',
+            'foto_perempuan' => 'required|image|max:20480',
 
-            'foto_cover' => 'required|image|max:10240',
-            'foto_acara' => 'required|image|max:10240',
-            'foto_bukutamu' => 'required|image|max:10240',
-            'foto_gift' => 'required|image|max:10240',
+            'foto_cover' => 'required|image|max:20480',
+            'foto_acara' => 'required|image|max:20480',
+            'foto_bukutamu' => 'required|image|max:20480',
+            'foto_gift' => 'required|image|max:20480',
 
             // GALLERY
             'gallery' => 'nullable|array|max:30',
-            'gallery.*' => 'nullable|image|max:5120',
+            'gallery.*' => 'nullable|image|',
         ]);
 
         // SIMPEN FOTO STATIS
@@ -139,7 +139,10 @@ class OrderController extends Controller
 
     // HASIL
     public function show($slug) {
-        $order = Order::where('slug', $slug)->where('status','published')->firstOrFail();
+        $order = Order::where('slug', $slug)
+            ->where('status','published')
+            ->with('galleryPhotos')
+            ->firstOrFail();
         $template = Template::findOrFail($order->template_id);
         $guestName = request()->query('to', '');
 
