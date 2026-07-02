@@ -12,14 +12,14 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: '#B88E2F',
-                primaryhover: '#a5802a',
+                primary: '#D2A941',
+                primaryhover: '#b48e2b',
                 secondary: '#FCF8F3',
                 secondaryhover: '#E5E1D4',
                 white: '#FDFDFD',
                 black: '#1B1B1B',
                 success:'#349012',
-                warning:'#fb923c',
+                warning:'#f6c23e',
                 danger:'#FF5858',
             },
             fontFamily: {

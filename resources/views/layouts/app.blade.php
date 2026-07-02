@@ -47,21 +47,39 @@
                 @auth
                 <p class="nav-link transition {{ request()->is('/') ? 'text-white' : 'text-gray-800' }}">|</p>
                 
-                <div class="flex items-center gap-4">
+                <div class="relative">
+                    <!-- Trigger -->
+                    <button id="profileButton" class="flex items-center gap-2 nav-link {{ request()->is('/') ? 'text-white' : 'text-gray-800' }} transition">
+                        <span class="">Hai, {{ Auth::user()->username }}</span>
+                        <i class="fa-solid fa-chevron-down text-xs transition duration-300" id="profileArrow"></i>
+                    </button>
 
-                    <span class="{{ request()->is('/') ? 'text-white' : 'text-gray-800' }} nama">
-                        Hai, {{ Auth::user()->username }}
-                    </span>
+                    <!-- Dropdown -->
+                    <div id="profileDropdown" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-xl border border-gray-200 hidden overflow-hidden z-50">
+                        
+                        <a href="/dashboard" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-100 transition">
+                            <i class="fa-solid fa-table-columns"></i>
+                            Dashboard
+                        </a>
 
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+                        <a href="/dashboard/profil" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-100 transition">
+                            <i class="fa-regular fa-user"></i>
+                            Profil
+                        </a>
 
-                        <button type="submit"
-                            class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            Logout
-                        </button>
-                    </form>
+                        <hr>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <button type="submit" class="w-full flex items-center gap-3 px-5 py-3 text-red-500 hover:bg-red-50 transition">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                Logout
+                            </button>
+                        </form>
+
+                    </div>
+
                 </div>
 
                 @else
@@ -161,6 +179,32 @@
             top: 0,
             behavior: 'smooth'
         });
+
+    });
+
+    const profileButton = document.getElementById('profileButton');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const profileArrow = document.getElementById('profileArrow');
+
+    profileButton.addEventListener('click', () => {
+
+        profileDropdown.classList.toggle('hidden');
+
+        profileArrow.classList.toggle('rotate-180');
+
+    });
+
+    document.addEventListener('click', (e) => {
+
+        if (
+            !profileButton.contains(e.target) &&
+            !profileDropdown.contains(e.target)
+        ) {
+
+            profileDropdown.classList.add('hidden');
+            profileArrow.classList.remove('rotate-180');
+
+        }
 
     });
 </script>

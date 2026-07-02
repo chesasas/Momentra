@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RsvpController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
@@ -38,6 +39,17 @@ Route::middleware('auth.message')->group(function() {
     // PEMBAYARAN
     Route::get('/orders/{order}/pembayaran', [OrderController::class, 'pembayaran'])->name('orders.pembayaran');
     Route::post('/order/{order}/success', [OrderController::class, 'success'])->name('orders.success');
+});
+
+Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function () {
+    Route::get('/', [DashboardController::class,'index'])->name('index');
+    Route::get('/undangan', [DashboardController::class,'undangan'])->name('undangan');
+
+    Route::get('/edit-order/{order}', [DashboardController::class,'edit'])->name('orders');
+    Route::delete('/delete-order/{order}', [DashboardController::class,'destroy'])->name('destroy');
+    Route::get('/share-order/{order}', [DashboardController::class,'share'])->name('share');
+
+    Route::get('/profil', [DashboardController::class,'index'])->name('index');
 });
 
 Route::get('/undangan/{slug}', [OrderController::class, 'show'])->name('invitations.show');
