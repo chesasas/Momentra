@@ -10,7 +10,7 @@
             <aside class="sticky top-28 h-fit">
                 <div class="p-4">
                     <h3 class="font-semibold mb-6">
-                        Progress Pengisian
+                        Perbarui Data
                     </h3>
 
                     <div class="flex flex-col gap-4">
@@ -69,12 +69,15 @@
                                 Mempelai Pria
                             </h3>
 
-                            <input type="text" name="nama_panggilan_laki" placeholder="Nama Panggilan" class="w-full border-0" required>
-                            <input type="text" name="nama_lengkap_laki" placeholder="Nama Lengkap" class="w-full border-0 mt-4" required>
-                            <input type="text" name="ayah_laki" placeholder="Nama Ayah" class="w-full border-0 mt-4" required>
-                            <input type="text" name="ibu_laki" placeholder="Nama Ibu" class="w-full border-0 my-4" required>
+                            <input type="text" value="{{ $order->nama_panggilan_laki }}" name="nama_panggilan_laki" placeholder="Nama Panggilan" class="w-full border-0" required>
+                            <input type="text" value="{{ old('nama_lengkap_laki', $order->nama_lengkap_laki) }}" name="nama_lengkap_laki" placeholder="Nama Lengkap" class="w-full border-0 mt-4" required>
+                            <input type="text" value="{{ old('ayah_laki', $order->ayah_laki) }}" name="ayah_laki" placeholder="Nama Ayah" class="w-full border-0 mt-4" required>
+                            <input type="text" value="{{ old('ibu_laki', $order->ibu_laki) }}" name="ibu_laki" placeholder="Nama Ibu" class="w-full border-0 my-4" required>
                             <label for="foto_laki" class="text-lg">Foto Mempelai Pria (Potrait)</label>
-                            <input type="file" name="foto_laki" class="w-full border-0" required>
+                            @if($order->foto_laki)
+                                <img src="{{ asset('storage/'.$order->foto_laki) }}" class="w-40 h-60 object-cover object-top rounded-xl mb-4">
+                            @endif
+                            <input type="file" value="{{ old('foto_laki', $order->foto_laki) }}" name="foto_laki" class="w-full border-0 px-1">
                         </div>
                         
                         {{-- Wanita --}}
@@ -83,12 +86,15 @@
                                 Mempelai Wanita
                             </h3>
                             
-                            <input type="text" name="nama_panggilan_perempuan" placeholder="Nama Panggilan" class="w-full border-0" required>
-                            <input type="text" name="nama_lengkap_perempuan" placeholder="Nama Lengkap" class="w-full border-0 mt-4" required>
-                            <input type="text" name="ayah_perempuan" placeholder="Nama Ayah" class="w-full border-0 mt-4" required>
-                            <input type="text" name="ibu_perempuan" placeholder="Nama Ibu" class="w-full my-4" required>
+                            <input type="text" value="{{ old('nama_panggilan_perempuan', $order->nama_panggilan_perempuan) }}" name="nama_panggilan_perempuan" placeholder="Nama Panggilan" class="w-full border-0" required>
+                            <input type="text" value="{{ old('nama_lengkap_perempuan', $order->nama_lengkap_perempuan) }}" name="nama_lengkap_perempuan" placeholder="Nama Lengkap" class="w-full border-0 mt-4" required>
+                            <input type="text" value="{{ old('ayah_perempuan', $order->ayah_perempuan) }}" name="ayah_perempuan" placeholder="Nama Ayah" class="w-full border-0 mt-4" required>
+                            <input type="text" value="{{ old('ibu_perempuan', $order->ibu_perempuan) }}" name="ibu_perempuan" placeholder="Nama Ibu" class="w-full my-4" required>
                             <label for="foto_perempuan" class="text-lg">Foto Mempelai Perempuan (Potrait)</label>
-                            <input type="file" name="foto_perempuan" class="w-full" required>
+                            @if($order->foto_perempuan)
+                                <img src="{{ asset('storage/'.$order->foto_perempuan) }}" class="w-40 h-60 object-cover object-top rounded-xl mb-4">
+                            @endif
+                            <input type="file" value="{{ old('foto_perempuan', $order->foto_perempuan) }}" name="foto_perempuan" class="w-full">
                         </div>
                     </div>
 
@@ -117,13 +123,13 @@
                     </h2>
 
                     <div class="grid md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="Hari" name="hari" class="border-0" required>
-                        <input type="date" placeholder="Tanggal" name="tanggal" class="border-0" required>
-                        <input type="time" placeholder="Jam Mulai" name="jam_mulai" class="border-0" required>
-                        <input type="time" placeholder="Jam Selesai" name="jam_selesai" class="border-0" required>
+                        <input type="text" placeholder="Hari" value="{{ old('hari', $order->hari) }}" name="hari" class="border-0" required>
+                        <input type="date" placeholder="Tanggal" value="{{ old('tanggal', \Carbon\Carbon::parse($order->tanggal)->format('Y-m-d')) }}" name="tanggal" class="border-0" required>
+                        <input type="time" placeholder="Jam Mulai" value="{{ old('jam_mulai', \Carbon\Carbon::parse($order->jam_mulai)->format('H:i')) }}" name="jam_mulai" class="border-0" required>
+                        <input type="time" placeholder="Jam Selesai" value="{{ old('jam_selesai', \Carbon\Carbon::parse($order->jam_selesai)->format('H:i')) }}" name="jam_selesai" class="border-0" required>
                     </div>
-                    <input type="text" placeholder="Lokasi" name="location" rows="4" class="w-full border-0 mt-6"></input required>
-                    <input type="text" placeholder="Link Google Maps" name="google_maps" class="w-full border-0 mt-6" required>
+                    <input type="text" placeholder="Lokasi" value="{{ old('location', $order->location) }}" name="location" rows="4" class="w-full border-0 mt-6"></input required>
+                    <input type="text" placeholder="Link Google Maps" value="{{ old('google_maps', $order->google_maps) }}" name="google_maps" class="w-full border-0 mt-6" required>
 
                     {{-- Keterangan --}}
                     <div class="pt-10">
@@ -148,13 +154,25 @@
                         Foto Statis
                     </h2>
                     <label class="text-lg font-semibold" for="foto_cover">Foto di bagian Cover (Awal Undangan)</label>
-                    <input type="file" name="foto_cover" class="w-full mb-4" required>
+                    @if($order->foto_cover)
+                                <img src="{{ asset('storage/'.$order->foto_cover) }}" class="w-100 h-60 object-cover rounded-xl">
+                            @endif
+                    <input type="file" value="{{ old('foto_cover', $order->foto_cover) }}" name="foto_cover" class="w-full mb-4 px-1">
                     <label class="text-lg font-semibold" for="foto_acara">Foto di bagian Tanggal Acara</label>
-                    <input type="file" name="foto_acara" class="w-full mb-4" required>
+                    @if($order->foto_acara)
+                                <img src="{{ asset('storage/'.$order->foto_acara) }}" class="w-100 h-60 object-cover rounded-xl">
+                            @endif
+                    <input type="file" value="{{ old('foto_acara', $order->foto_acara) }}" name="foto_acara" class="w-full mb-4 px-1">
                     <label class="text-lg font-semibold" for="foto_bukutamu">Foto di bagian Buku Tamu</label>
-                    <input type="file" name="foto_bukutamu" class="w-full mb-4" required>
+                    @if($order->foto_bukutamu)
+                                <img src="{{ asset('storage/'.$order->foto_bukutamu) }}" class="w-100 h-60 object-cover rounded-xl">
+                            @endif
+                    <input type="file" value="{{ old('foto_bukutamu', $order->foto_bukutamu) }}" name="foto_bukutamu" class="w-full mb-4 px-1">
                     <label class="text-lg font-semibold" for="foto_gift">Foto di bagian Hadiah</label>
-                    <input type="file" name="foto_gift" class="w-full" required>
+                    @if($order->foto_gift)
+                                <img src="{{ asset('storage/'.$order->foto_gift) }}" class="w-100 h-60 object-cover rounded-xl">
+                            @endif
+                    <input type="file" value="{{ old('foto_gift', $order->foto_gift) }}" name="foto_gift" class="w-full px-1">
 
                     {{-- Keterangan --}}
                     <div class="pt-10">
@@ -182,16 +200,16 @@
                     <div class="grid md:grid-cols-2 gap-10">
                         <div class="flex flex-col gap-4">
                             <label class="text-lg font-semibold">Bank 1</label>
-                            <input type="text" name="bank1" placeholder="Nama Bank" class="border-0" required>
-                            <input type="text" name="norek_bank1" placeholder="Nomor Rekening" class="border-0" required>
-                            <input type="text" name="atasnama_bank1" placeholder="Atas Nama" class="border-0" required>
+                            <input type="text" value="{{ old('bank1', $order->bank1) }}" name="bank1" placeholder="Nama Bank" class="border-0" required>
+                            <input type="text" value="{{ old('norek_bank1', $order->norek_bank1) }}" name="norek_bank1" placeholder="Nomor Rekening" class="border-0" required>
+                            <input type="text" value="{{ old('atasnama_bank1', $order->atasnama_bank1) }}" name="atasnama_bank1" placeholder="Atas Nama" class="border-0" required>
                         </div>
                         
                         <div class="flex flex-col gap-4">
                             <label class="text-lg font-semibold">Bank 2</label>
-                            <input type="text" name="bank2" placeholder="Nama Bank" class="border-0" required>
-                            <input type="text" name="norek_bank2" placeholder="Nomor Rekening" class="border-0" required>
-                            <input type="text" name="atasnama_bank2" placeholder="Atas Nama" class="border-0" required>
+                            <input type="text" value="{{ old('bank2', $order->bank2) }}" name="bank2" placeholder="Nama Bank" class="border-0" required>
+                            <input type="text" value="{{ old('norek_bank2', $order->norek_bank2) }}" name="norek_bank2" placeholder="Nomor Rekening" class="border-0" required>
+                            <input type="text" value="{{ old('atasnama_bank2', $order->atasnama_bank2) }}" name="atasnama_bank2" placeholder="Atas Nama" class="border-0" required>
                         </div>
                     </div>
 
@@ -217,14 +235,25 @@
                         Foto Gallery (Landscape)
                     </h2>
 
-                    <label class="text-lg font-semibold">Silakan pilih beberapa foto sekaligus (Maksimal 12 foto).</label>
-                    <input type="file" id="galleryInput" name="gallery[]" multiple accept="image/*">
+                    <label class="text-lg font-semibold">Silakan hapus foto atau tambah dengan mengupload beberapa foto sekaligus (Maksimal 12 foto).</label>
 
                     <p id="galleryCount" class="mt-2 ml-4 text-sm text-gray-500">
                         0 / 12 Foto
                     </p>
 
-                    <div id="galleryPreview" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 ml-4"></div>
+                    <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        @foreach($order->galleryPhotos as $photo)
+                            <div class="relative group old-gallery">
+                                <img src="{{ asset('storage/'.$photo->file_path) }}" class="w-full h-40 object-cover object-center rounded-xl">
+                                <button type="button" onclick="removeGallery(this, {{ $photo->id }})" class="absolute bottom-0 right-0 bg-danger hover:bg-red-500 transition text-white w-9 h-9 rounded-br-xl">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <input type="hidden" name="existing_gallery[]" value="{{ $photo->id }}">
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <input type="file" id="galleryInput" name="gallery[]" multiple accept="image/*">
 
                     {{-- Keterangan --}}
                     <div class="pt-10">
@@ -241,14 +270,10 @@
                 </section>
                 
                 <div class="mt-8">
-                    <button onclick="history.back()" class="bg-gray-300 hover:bg-gray-400 px-3 py-2 mr-1 rounded-xl transition">
+                    <a href="/dashboard#undangan" class="bg-gray-300 hover:bg-gray-400 px-3 py-2 mr-1 rounded-xl transition">
                         <i class="fa-solid fa-arrow-left"></i>
                         Kembali
-                    </button>
-                    <button type="button" id="clearDraftBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 mr-1 rounded-xl transition">
-                        <i class="fa-solid fa-eraser"></i>
-                        Reset Data
-                    </button>
+                    </a>
                     <button type="submit" class="bg-primary hover:bg-primaryhover text-white px-4 py-2 rounded-xl transition">
                         <i class="fa-solid fa-file-invoice-dollar"></i>
                         Lanjut ke Pembayaran
@@ -260,14 +285,6 @@
     </div>
 
 </div>
-
-@if(session('success'))
-    <script>
-        localStorage.removeItem(
-            'momentra-order-{{ $order->id }}'
-        );
-    </script>
-@endif
 
 <script>
     // UNTUK SIDEBAR
@@ -304,103 +321,89 @@
         activateLink();
     });
 
-    // AUTOSAVE DATA INPUTAN
-    const form = document.getElementById('orderForm');
-    const storageKey =
-        'momentra-order-{{ $order->id }}';
-
-    // SAVE
-    form.addEventListener('input', () => {
-        const formData = {};
-        form.querySelectorAll('input, textarea, select').forEach(field => {
-            if (
-                field.type !== 'file' && field.name
-            ) {
-                formData[field.name] = field.value;
-            }
-        });
-
-        localStorage.setItem(storageKey,JSON.stringify(formData));
-    });
-
-    // LOAD
-    document.addEventListener('DOMContentLoaded',() => {
-            const savedData = localStorage.getItem(storageKey);
-
-            if (!savedData) return;
-
-            const formData = JSON.parse(savedData);
-
-            Object.keys(formData).forEach(name => {
-                const field = document.querySelector(`[name="${name}"]`);
-
-                if (field) {
-                    field.value = formData[name];
-                }
-            });
-        }
-    );
-
-    // HAPUS
-    document.getElementById('clearDraftBtn').addEventListener('click', () => {
-        if (
-            confirm(
-                'Buang semua perubahan yang belum disimpan?'
-            )
-        ) {
-            localStorage.removeItem(storageKey);
-            location.reload();
-        }
-    });
-
     // GALLERY
     const galleryInput = document.getElementById('galleryInput');
-    const galleryPreview = document.getElementById('galleryPreview');
+    const galleryGrid = document.getElementById("galleryGrid");
     const galleryCount = document.getElementById('galleryCount');
+
+    let galleryFiles = [];
+    const dataTransfer = new DataTransfer();
 
     galleryInput.addEventListener('change', function() {
 
         console.log('Jumlah file:', this.files.length);
-
         for(let i = 0; i < this.files.length; i++) {
             console.log(this.files[i].name);
         }
-
-        galleryPreview.innerHTML = '';
-
         const files = Array.from(this.files);
 
-        galleryCount.textContent =
-            `${files.length} / 12 Foto`;
+        files.forEach(file => {
+            galleryFiles.push(file);
+            dataTransfer.items.add(file);
+        });
+        const oldGallery = document.querySelectorAll("input[name='existing_gallery[]']").length;
 
-        if (files.length > 12) {
-            alert('Maksimal 12 foto');
-            this.value = '';
-            galleryPreview.innerHTML = '';
-            galleryCount.textContent = '0 / 12 Foto';
+        if(oldGallery + galleryFiles.length > 12){
+            alert("Maksimal 12 foto");
+            galleryFiles.splice(galleryFiles.length - files.length,files.length);
+            
             return;
         }
+        renderGalleryPreview();
 
-        files.forEach(file => {
+    });
+    
+    function removeNewGallery(index){
+        galleryFiles.splice(index,1);
+        dataTransfer.items.clear();
+        
+        galleryFiles.forEach(file=>{
+            dataTransfer.items.add(file);
+        });
+        galleryInput.files = dataTransfer.files;
+
+        renderGalleryPreview();
+    }
+
+    function removeGallery(button,id){
+        document.querySelector(`input[value="${id}"]`).remove();
+        event.target.closest(".relative").remove();
+        updateGalleryCount();
+    }
+
+    function updateGalleryCount(){
+        const oldGallery = document.querySelectorAll("input[name='existing_gallery[]']").length;
+        galleryCount.innerHTML =`${oldGallery + galleryFiles.length} / 12 Foto`;
+    }
+
+    updateGalleryCount();
+
+    function renderGalleryPreview(){
+        document.querySelectorAll(".new-gallery").forEach(el=>el.remove());
+        galleryFiles.forEach((file,index)=>{
 
             const reader = new FileReader();
 
-            reader.onload = function(e) {
+            reader.onload = function(e){
+                const div = document.createElement("div");
+                div.className = "relative group new-gallery";
+                div.innerHTML = `
+                    <img src="${e.target.result}" class="w-full h-40 object-cover object-center rounded-xl">
 
-                galleryPreview.innerHTML += `
-                    <img
-                        src="${e.target.result}"
-                        class="w-full h-40 object-cover rounded-xl"
-                    >
+                    <button type="button" onclick="removeNewGallery(${index})" class="absolute bottom-0 right-0 bg-danger hover:bg-red-500 transition text-white w-9 h-9 rounded-br-xl">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
                 `;
+                galleryGrid.appendChild(div);
 
             };
-
             reader.readAsDataURL(file);
 
         });
 
-    });
+        updateGalleryCount();
+        galleryInput.files = dataTransfer.files;
+    }
 </script>
 
 @endsection

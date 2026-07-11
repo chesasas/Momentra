@@ -38,7 +38,7 @@
                     Undangan Aktif
                 </h2>
                 <p class="text-3xl font-semibold mt-1">
-                    {{ $total }}
+                    {{ $published }}
                 </p>
             </div>
 
@@ -54,7 +54,7 @@
                     Menunggu Pembayaran
                 </h2>
                 <p class="text-3xl font-semibold mt-1">
-                    {{ $total }}
+                    {{ $pending }}
                 </p>
             </div>
 
@@ -91,7 +91,7 @@
                                 Mempelai
                             </th>
 
-                            <th class="px-3 py-4 w-[10%] text-left text-xs font-semibold uppercase tracking-wider">
+                            <th class="px-3 py-4 w-[9%] text-left text-xs font-semibold uppercase tracking-wider">
                                 Tanggal
                             </th>
 
@@ -103,11 +103,11 @@
                                 Link Undangan
                             </th>
 
-                            <th class="px-3 py-4 w-[10%] text-center text-xs font-semibold uppercase tracking-wider">
+                            <th class="px-3 py-4 w-[9%] text-center text-xs font-semibold uppercase tracking-wider">
                                 Buat Link Undangan
                             </th>
 
-                            <th class="px-3 py-4 w-[10%] text-center text-xs font-semibold uppercase tracking-wider">
+                            <th class="px-3 py-4 w-[12%] text-center text-xs font-semibold uppercase tracking-wider">
                                 Action
                             </th>
                         </tr>
@@ -132,7 +132,7 @@
                                     </p>
                                 </td>
 
-                                <td class="px-3 py-4 w-[10%]">
+                                <td class="px-3 py-4 w-[9%]">
                                     <p class="text-sm">{{ \Carbon\Carbon::parse($order->tanggal)->translatedFormat('d F Y') }}</p>
                                 </td>
 
@@ -152,31 +152,38 @@
                                     </a>
                                 </td>
 
-                                <td class="px-3 py-4 w-[10%]">
+                                <td class="px-3 py-4 w-[9%]">
                                     <div class="flex justify-center">
+                                    @if ($order->status == "published")
                                         {{-- Share --}}
                                         <a href="{{ route('dashboard.share', $order) }}" class="py-2 px-2 gap-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition">
                                             <i class="fa-solid fa-share-nodes"></i>
                                             <p class="text-xs">Buat</p>
                                         </a>
+                                    @elseif ($order->status == "pending_payment")
+                                        {{-- Bayar --}}
+                                        <a href="{{ route('orders.pembayaran', $order->id) }}" class="py-2 px-2 gap-1 rounded-lg bg-primary hover:bg-primaryhover text-white flex items-center justify-center transition">
+                                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                                            <p class="text-xs font-semibold">Bayar</p>
+                                        </a>
+                                    @endif
                                     </div>
                                 </td>
-                                <td class="px-3 py-4 w-[10%]">
+                                <td class="px-3 py-4 w-[12%]">
                                     <div class="flex justify-center gap-2">
                                         {{-- Edit --}}
                                         <a href="{{ route('dashboard.orders', $order) }}" class="py-2 px-2 gap-1 rounded-lg bg-warning hover:bg-amber-400 text-white flex items-center justify-center transition">
                                             <i class="fa-solid fa-pen"></i>
                                             <p class="text-xs">Edit</p>
                                         </a>
-
                                         {{-- Delete --}}
                                         <form action="{{ route('dashboard.destroy', $order) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-
+                                            
                                             <button onclick="return confirm('Yakin ingin menghapus?')" class="py-2 px-2 gap-1 rounded-lg bg-danger hover:bg-red-500 text-white flex items-center justify-center transition">
                                                 <i class="fa-solid fa-trash"></i>
-                                                <p class="text-xs">Edit</p>
+                                                <p class="text-xs">Hapus</p>
                                             </button>
                                         </form>
                                     </div>
@@ -184,8 +191,9 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="py-8 text-center text-gray-500">
-                                    Belum ada data undangan.
+                                <td colspan="7" class="py-8 text-center text-gray-500">
+                                    <p class="mb-4">Belum ada data undangan.</p>
+                                    <a href="/templates" class="px-3 py-2 rounded-lg text-white font-semibold bg-primary hover:bg-primaryhover">Pesan Undangan Mu Sekarang!</a>
                                 </td>
                             </tr>
                         @endforelse

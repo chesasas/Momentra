@@ -388,10 +388,7 @@
                 reader.onload = function(e) {
 
                     galleryPreview.innerHTML += `
-                        <img
-                            src="${e.target.result}"
-                            class="w-full h-40 object-cover rounded-xl"
-                        >
+                        <img src="${e.target.result}" class="w-full h-40 object-cover object-center rounded-xl">
                     `;
 
                 };

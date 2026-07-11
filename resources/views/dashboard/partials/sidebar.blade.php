@@ -2,13 +2,11 @@
 <div class="fixed top-0 left-0 h-screen w-64 bg-primary text-white shadow-xl flex flex-col z-30">
 
     {{-- Logo --}}
-    <div class="h-20 flex items-center justify-center border-b border-white/20">
+    <div class="flex items-center px-4 py-1">
 
-        <a href="{{ route('dashboard.index') }}"
-            class="flex items-center gap-3">
-
-            <div class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center">
-                <i class="fa-solid fa-envelope text-xl"></i>
+        <a href="/dashboard" class="flex items-center gap-1">
+            <div class="w-14 flex items-center justify-center">
+                <img src="white-logo.png" alt="" class="">
             </div>
 
             <div>
@@ -20,7 +18,6 @@
                     Dashboard
                 </p>
             </div>
-
         </a>
 
     </div>
@@ -38,7 +35,7 @@
             Undangan Saya
         </a>
 
-        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl transition hover:bg-white/10">
+        <a href="/dashboard/profil" class="flex items-center gap-3 px-4 py-3 rounded-xl transition hover:bg-white/10">
             <i class="fa-solid fa-user w-5 text-center"></i>
             Profil
         </a>

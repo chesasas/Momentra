@@ -63,4 +63,8 @@ class DashboardController extends Controller
 
         return view('dashboard.share-order', compact('order'));
     }
+
+    public function profil() {
+        return view('dashboard.profil');
+    }
 }

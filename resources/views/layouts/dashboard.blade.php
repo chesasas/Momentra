@@ -43,7 +43,7 @@
             @include('dashboard.partials.navbar')
 
             {{-- Content --}}
-            <main class="px-8 py-2">
+            <main class="px-8 py-2 min-h-screen">
 
                 @yield('content')
 

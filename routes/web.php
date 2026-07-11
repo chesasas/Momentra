@@ -49,7 +49,7 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
     Route::delete('/delete-order/{order}', [DashboardController::class,'destroy'])->name('destroy');
     Route::get('/share-order/{order}', [DashboardController::class,'share'])->name('share');
 
-    Route::get('/profil', [DashboardController::class,'index'])->name('index');
+    Route::get('/profil', [DashboardController::class,'profil'])->name('profil');
 });
 
 Route::get('/undangan/{slug}', [OrderController::class, 'show'])->name('invitations.show');
