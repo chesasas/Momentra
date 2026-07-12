@@ -36,16 +36,19 @@ Route::middleware('auth.message')->group(function() {
     // PEMESANAN
     Route::get('/orders/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit');
     Route::put('/orders/{order}/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
+    
     // PEMBAYARAN
     Route::get('/orders/{order}/pembayaran', [OrderController::class, 'pembayaran'])->name('orders.pembayaran');
     Route::post('/order/{order}/success', [OrderController::class, 'success'])->name('orders.success');
 });
 
+// DASHBOARD
 Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class,'index'])->name('index');
     Route::get('/undangan', [DashboardController::class,'undangan'])->name('undangan');
 
     Route::get('/edit-order/{order}', [DashboardController::class,'edit'])->name('orders');
+    Route::put('/update-order/{order}', [DashboardController::class,'update'])->name('update');
     Route::delete('/delete-order/{order}', [DashboardController::class,'destroy'])->name('destroy');
     Route::get('/share-order/{order}', [DashboardController::class,'share'])->name('share');
 

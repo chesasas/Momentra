@@ -48,4 +48,17 @@
     button {
         @apply font-body font-medium;
     }
+
+    @keyframes successPop{
+        0%,100%{
+            transform:scale(1);
+        }
+        50%{
+            transform:scale(1.08);
+        }
+    }
+
+    .success-icon{
+        animation: successPop 1.7s ease-in-out infinite;
+    }
 }

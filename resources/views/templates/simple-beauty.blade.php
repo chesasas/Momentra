@@ -350,15 +350,17 @@
                     <h1 class="text-2xl font-semibold mb-2">HADIAH (GIFT)</h1>
                     <div class="flex justify-center gap-4">
                         <div class="px-4 py-2 rounded-xl border border-black flex flex-col gap-2">
-                            <h1 class="text-xl font-semibold">BCA</h1>
-                            <h1 class="text-xl font-semibold">777777777</h1>
-                            <h1 class="text-xl font-semibold">{{ $order->nama_lengkap_laki }}</h1>
+                            <h1 class="text-xl font-semibold">{{ $order->bank1 }}</h1>
+                            <h1 class="text-xl font-semibold">{{ $order->norek_bank1 }}</h1>
+                            <h1 class="text-xl font-semibold">{{ $order->atasnama_bank1 }}</h1>
                         </div>
+                        @if ($order->norek_bank2 != "")
                         <div class="px-4 py-2 rounded-xl border border-black flex flex-col gap-2">
-                            <h1 class="text-xl font-semibold">BCA</h1>
-                            <h1 class="text-xl font-semibold">777777777</h1>
-                            <h1 class="text-xl font-semibold">{{ $order->nama_lengkap_perempuan }}</h1>
+                            <h1 class="text-xl font-semibold">{{ $order->bank2 }}</h1>
+                            <h1 class="text-xl font-semibold">{{ $order->norek_bank2 }}</h1>
+                            <h1 class="text-xl font-semibold">{{ $order->atasnama_bank2 }}</h1>
                         </div>
+                        @endif
                     </div>
                 </div>
 

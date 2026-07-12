@@ -40,7 +40,7 @@
 
         <!-- Form -->
         <main class="lg:col-span-3 bg-secondaryhover p-10 rounded-xl">
-            <form id="orderForm" action="{{ route('orders.checkout', $order) }}" method="POST" enctype="multipart/form-data">
+            <form id="orderForm" action="{{ route('dashboard.update', $order) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -69,7 +69,7 @@
                                 Mempelai Pria
                             </h3>
 
-                            <input type="text" value="{{ $order->nama_panggilan_laki }}" name="nama_panggilan_laki" placeholder="Nama Panggilan" class="w-full border-0" required>
+                            <input type="text" value="{{ old('nama_panggilan_laki', $order->nama_panggilan_laki) }}" name="nama_panggilan_laki" placeholder="Nama Panggilan" class="w-full border-0" required>
                             <input type="text" value="{{ old('nama_lengkap_laki', $order->nama_lengkap_laki) }}" name="nama_lengkap_laki" placeholder="Nama Lengkap" class="w-full border-0 mt-4" required>
                             <input type="text" value="{{ old('ayah_laki', $order->ayah_laki) }}" name="ayah_laki" placeholder="Nama Ayah" class="w-full border-0 mt-4" required>
                             <input type="text" value="{{ old('ibu_laki', $order->ibu_laki) }}" name="ibu_laki" placeholder="Nama Ibu" class="w-full border-0 my-4" required>
@@ -207,9 +207,9 @@
                         
                         <div class="flex flex-col gap-4">
                             <label class="text-lg font-semibold">Bank 2</label>
-                            <input type="text" value="{{ old('bank2', $order->bank2) }}" name="bank2" placeholder="Nama Bank" class="border-0" required>
-                            <input type="text" value="{{ old('norek_bank2', $order->norek_bank2) }}" name="norek_bank2" placeholder="Nomor Rekening" class="border-0" required>
-                            <input type="text" value="{{ old('atasnama_bank2', $order->atasnama_bank2) }}" name="atasnama_bank2" placeholder="Atas Nama" class="border-0" required>
+                            <input type="text" value="{{ old('bank2', $order->bank2) }}" name="bank2" placeholder="Nama Bank" class="border-0">
+                            <input type="text" value="{{ old('norek_bank2', $order->norek_bank2) }}" name="norek_bank2" placeholder="Nomor Rekening" class="border-0">
+                            <input type="text" value="{{ old('atasnama_bank2', $order->atasnama_bank2) }}" name="atasnama_bank2" placeholder="Atas Nama" class="border-0">
                         </div>
                     </div>
 
@@ -276,7 +276,7 @@
                     </a>
                     <button type="submit" class="bg-primary hover:bg-primaryhover text-white px-4 py-2 rounded-xl transition">
                         <i class="fa-solid fa-file-invoice-dollar"></i>
-                        Lanjut ke Pembayaran
+                        Simpan Perubahan
                     </button>
                 </div>
             </form>

@@ -2,6 +2,13 @@
 
 @section('content')
 
+@if(session('success'))
+    <div class="mb-6 rounded-xl bg-green-100 border border-green-300 px-5 py-4 text-green-700">
+        <i class="fa-solid fa-circle-check mr-2"></i>
+        {{ session('success') }}
+    </div>
+@endif
+
     <!-- Greeting -->
     <div id="dashboard" class="mt-4 mb-8 scroll-mt-28">
         <h1 class="text-2xl font-normal">
@@ -73,10 +80,14 @@
     <div class="w-full pb-10">
 
         <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-            <div class="px-3 py-2 border-b">
+            <div class="px-4 py-4 border-b flex justify-between">
                 <h2 class="text-xl font-semibold text-gray-800">
                     Daftar Undangan Saya
                 </h2>
+                <a href="/templates" class="flex items-center gap-1 px-3 py-2 text-sm rounded-lg font-semibold bg-primary text-white hover:bg-primaryhover transition">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    Buat Undangan
+                </a>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full table-fixed divide-y divide-gray-200">
