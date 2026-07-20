@@ -43,7 +43,7 @@
     <!-- PAUSE BUTTON -->
     <a href="#" class="hidden fixed bottom-5 right-5 text-4xl z-30" id="btnPause" onclick="togglePause()">⏸️</a>
 
-    <nav id="navbar" class="w-full z-50 transition-all duration-300 {{ request()->is('/') ? 'bg-transparent' : 'bg-white shadow' }}">
+    <nav id="navbar" class="w-full z-50 transition-all duration-300 {{ request()->is('/') ? 'bg-transparent' : 'bg-[#ffffff] shadow' }}">
         <div class="mx-auto px-8 py-4 flex justify-between items-center">
             <h3 id="logo" class="text-2xl font-bold transition text-gray-800">
                 Momentra
@@ -56,7 +56,7 @@
                 <form action="{{ route('templates.use', $template->slug) }}" method="POST">
                     @csrf
 
-                    <button type="submit" class="inline-block font-['Montserrat'] font-semibold bg-primary hover:bg-primaryhover text-white px-3 py-2 rounded-lg transition">
+                    <button type="submit" class="inline-block font-['Montserrat'] font-semibold bg-primary hover:bg-primaryhover text-[#ffffff] px-3 py-2 rounded-lg transition">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                         Gunakan Template
                     </button>
@@ -69,16 +69,17 @@
         {{--===== COVER ====================--}}
         <section class="">
             <div class="relative text-center h-screen flex justify-between">
-                <img src="{{ asset('images/templates/simple-beauty/all.png') }}" alt="" class="absolute -left-36 top-5 h-[90%] opacity-40">
-                <img src="{{ asset('images/templates/simple-beauty/all.png') }}" alt="" class="absolute rotate-180 -right-36 top-5 h-[90%] opacity-40">
+                <img src="{{ asset('images/templates/balinese-elegant/bunga.png') }}" alt="" class="absolute right-0 top-0 h-[30%] -z-20">
 
                 <div class="w-[50%] h-full flex relative">
                     <img src="{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}" alt="" class="object-cover w-full h-full">
 
                     <div class="absolute right-0 top-0 w-32 h-screen bg-gradient-to-l from-[#dacfbf] to-transparent z-10"></div>
                 </div>
-                <div class="w-[50%] px-10 py-20 flex flex-col justify-center">
-                    <div class="pb-20">
+                <div class="w-[50%] px-10 pt-20 flex flex-col justify-center">
+                    <h1 class="text-3xl pb-12">Undangan Pernikahan</h1>
+                    
+                    <div class="pb-10">
                         <h2 class="text-8xl">Krisna</h2>
                         <h1 class="text-4xl">&</h1>
                         <h2 class="text-8xl">Dewina</h2>
@@ -89,14 +90,14 @@
                     <h1 class="max-w-md mx-auto text-2xl">Mohon maaf apabila ada kesalahan dalam penulisan nama atau gelar.</h1>
                     
                     <div class="my-8">
-                        <a href="#undangan" onclick="bukaUndangan()" class="font-['Cormorant_Garamond'] inline-block py-2 px-4 text-xl bg-white rounded-xl font-light hover:scale-105 transition duration-200">
+                        <a href="#undangan" onclick="bukaUndangan()" class="font-['Cormorant_Garamond'] inline-block py-2 px-4 text-xl bg-[#ffffff] rounded-xl font-light hover:scale-105 transition duration-200">
                             <i class="fa-regular fa-envelope"></i>
                             Buka Undangan
                         </a>
 
                         {{-- AUDIO --}}
                         <audio id="bgMusic" loop>
-                            <source src="{{ asset('storage/music/Beautiful In White - Shane Filan.mp3') }}" type="audio/mpeg">
+                            <source src="{{ asset('storage/music/Beautiful In [#ffffff] - Shane Filan.mp3') }}" type="audio/mpeg">
                         </audio>
                     </div>
                 </div>
@@ -107,8 +108,7 @@
 <div id="kontenUndangan" class="hidden">
     {{--===== SAVE THE DATE ====================--}}
     <section class="relative bg-cover bg-center z-0" style="background-image: url('{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}')">
-        <div class="absolute bg-black opacity-50 w-full h-screen z-0"></div>
-        
+        <div class="absolute bg-black opacity-20 w-full h-screen z-0"></div>
         <div class="absolute top-0 right-0 w-[90%] h-full bg-gradient-to-l from-black to-transparent z-10"></div>
 
         <div id="undangan" class="text-center h-screen mr-20 py-20 flex justify-end items-center">
@@ -154,16 +154,16 @@
     </section>
 
     {{--===== LAKIK ====================--}}
-    <section class="relative">
-        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 opacity-40 h-[60%]">
-        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 opacity-40 h-[60%]">
+    <section class="relative h-screen flex flex-col justify-center items-center w-full border-b-2 border-black">
+        <img src="{{ asset('images/templates/balinese-elegant/bunga.png') }}" alt="" class="absolute right-0 top-0 h-[30%]">
+        <img src="{{ asset('images/templates/balinese-elegant/bunga.png') }}" alt="" class="absolute left-0 bottom-0 h-[30%] rotate-180">
 
-        <div class="max-w-4xl mx-auto text-center h-[75vh] py-4 flex justify-between items-center">
+        <div class="max-w-7xl h-[80%] bg-[#ffffff] rounded-3xl shadow-2xl text-center py-10 px-24 flex justify-between items-center">
             <div class="w-[50%] h-full flex justify-center items-center">
-                <img src="{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}" alt="" class="object-cover w-[85%] h-full rounded-full">
+                <img src="{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}" alt="" class="object-cover w-[80%] h-full rounded-full">
             </div>
             <div class="w-[50%] flex flex-col gap-6">
-                <h2 class="text-9xl">Nathan</h2>
+                <h2 class="text-9xl text-[#a59681]">Nathan</h2>
                 <h1 class="text-3xl font-semibold">Nathan Christopher Gunawan</h1>
                 <h1 class="text-3xl italic">Putra dari pasangan</h1>
                 <div>
@@ -175,23 +175,19 @@
         </div>
     </section>
 
-{{--===== DIVIDER --}}
-    <div class="max-w-4xl mx-auto flex items-center justify-center my-8">
-        <div class="w-full h-1 bg-black rounded-full"></div>
-
-        <i class="fa-solid fa-heart mx-4 text-black"></i>
-
-        <div class="w-full h-1 bg-black rounded-full"></div>
-    </div>
-
     {{--===== PEREMPUAN ====================--}}
-    <section class="relative">
-        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 opacity-40 h-[60%]">
-        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 opacity-40 h-[60%]">
+    <section class="relative h-screen flex flex-col justify-center items-center w-full">
+        {{-- <img src="{{ asset('images/templates/balinese-elegant/bunga-rotate.png') }}" alt="" class="absolute left-0 top-0 h-[30%]">
+        <img src="{{ asset('images/templates/balinese-elegant/bunga-rotate.png') }}" alt="" class="absolute right-0 bottom-0 h-[30%] rotate-180"> --}}
+        <img src="{{ asset('images/templates/balinese-elegant/bunga.png') }}" alt="" class="absolute left-0 bottom-0 h-[30%] rotate-180">
+        <img src="{{ asset('images/templates/balinese-elegant/bunga.png') }}" alt="" class="absolute right-0 top-0 h-[30%]">
 
-        <div class="max-w-4xl mx-auto text-center h-[75vh] py-4 flex justify-between items-center">
+        <div class="max-w-7xl h-[80%] bg-[#ffffff] rounded-3xl shadow-2xl text-center py-10 px-24 flex justify-between items-center">
+            <div class="w-[50%] h-full flex justify-center items-center">
+                <img src="{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}" alt="" class="object-cover w-[80%] h-full rounded-full">
+            </div>
             <div class="w-[50%] flex flex-col gap-6">
-                <h2 class="text-9xl">Clara</h2>
+                <h2 class="text-9xl text-[#a59681]">Clara</h2>
                 <h1 class="text-3xl font-semibold">Clara Abigail Tan</h1>
                 <h1 class="text-3xl italic">Putri dari pasangan</h1>
                 <div>
@@ -200,38 +196,32 @@
                     <h1 class="text-3xl font-semibold">Monica Lee</h1>
                 </div>
             </div>
-            <div class="w-[50%] h-full flex justify-center items-center">
-                <img src="{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}" alt="" class="object-cover w-[85%] h-full rounded-full">
-            </div>
         </div>
     </section>
     
     {{--===== INFO ACARA ====================--}}
     <section class="relative bg-cover bg-center z-0" style="background-image: url('{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}')">
-        <div class="absolute bg-white opacity-50 w-full h-screen z-0"></div>
+        <div class="absolute bg-black opacity-20 w-full h-screen z-0"></div>
+        <div class="absolute top-0 right-0 w-[90%] h-full bg-gradient-to-l from-black to-transparent z-10"></div>
         
-        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#f6f0eb] to-transparent z-10"></div>
-        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#f6f0eb] to-transparent z-10"></div>
-        
-        <img src="{{ asset('images/templates/simple-beauty/up.png') }}" alt="" class="absolute -left-36 top-0 h-[50%] opacity-40 z-20">
-        <img src="{{ asset('images/templates/simple-beauty/down.png') }}" alt="" class="absolute -right-36 bottom-0 h-[50%] opacity-40 z-20">
-        
-        <div class="text-center h-screen py-20 flex flex-col z-20">
-            <h2 class="text-7xl pb-4 z-20">Acara Kami</h2>
-            
-            <div class="items-center z-20">
-                <div class="w-full text-center gap-4">
-                    <h1 class="text-2xl font-semibold mb-2">The Stone Hotel</h1>
-                    <h1 class="text-2xl font-semibold mb-2">Sabtu, 20 Juni 2026</h1>
-                    <h1 class="text-2xl font-semibold">16.00 WITA s/d 20.00 WITA</h1>
+        <div class="text-center h-screen px-20 flex justify-end items-center z-20">
+            <div class="z-20">
+                <h2 class="text-8xl text-[#ffffff] pb-16 z-20">Acara Kami</h2>
+                
+                <div class="items-center z-20">
+                    <div class="flex flex-col text-center gap-6">
+                        <h1 class="text-3xl text-[#ffffff] font-semibold mb-2">Sabtu, 20 Juni 2026</h1>
+                        <h1 class="text-3xl text-[#ffffff]">16.00 WITA s/d 20.00 WITA</h1>
+                        <h1 class="text-3xl text-[#ffffff] font-semibold mb-2">The Stone Hotel</h1>
+                    </div>
                 </div>
-            </div>
-
-            <div class="my-8 z-20">
-                <a href="https://www.google.com/maps" target="_blank" class="font-['Cormorant_Garamond'] inline-block py-2 px-4 text-lg bg-white rounded-full font-light hover:scale-105 transition duration-200 z-30">
-                    <i class="fa-solid fa-location-dot"></i>
-                    Lihat Lokasi
-                </a>
+    
+                <div class="my-8 z-20">
+                    <a href="https://www.google.com/maps" target="_blank" class="font-['Cormorant_Garamond'] inline-block py-2 px-4 text-lg bg-[#ffffff] rounded-xl font-light hover:scale-105 transition duration-200 z-30">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Lihat Lokasi
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -239,7 +229,7 @@
     {{--===== GALLERY ====================--}}
     <section>
         <div class="relative text-center pt-10 flex flex-col">
-            <h2 class="text-6xl pb-8">Wedding Gallery</h2>
+            <h2 class="text-6xl pb-8 text-[#ffffff]">Wedding Gallery</h2>
 
             <section id="gallery">
                 <div class="flex flex-wrap justify-center gap-4 mx-8">
@@ -259,12 +249,12 @@
 
             {{-- <div id="galleryModal" class="fixed inset-0 bg-black/70 backdrop-blur-md opacity-0 invisible transition-all duration-300 flex justify-center items-center z-[999]">
                 <!-- Close -->
-                <button id="closeGallery" class="absolute top-8 right-8 text-white text-4xl">
+                <button id="closeGallery" class="absolute top-8 right-8 text-[#ffffff] text-4xl">
                     <i class="fa-solid fa-circle-xmark"></i>
                 </button>
 
                 <!-- Prev -->
-                <button id="prevImage" class="absolute left-10 p-4 text-white text-3xl">
+                <button id="prevImage" class="absolute left-10 p-4 text-[#ffffff] text-3xl">
                     <i class="fa-solid fa-angle-left"></i>
                 </button>
 
@@ -272,22 +262,20 @@
                 <img id="modalImage" class="max-w-[90%] max-h-[90vh] rounded-xl transition-all duration-500 ease-in-out opacity-100 translate-x-0 scale-100 select-none">
 
                 <!-- Next -->
-                <button id="nextImage" class="absolute right-10 p-4 text-white text-3xl">
+                <button id="nextImage" class="absolute right-10 p-4 text-[#ffffff] text-3xl">
                     <i class="fa-solid fa-angle-right"></i>
                 </button>
 
                 <!-- Counter -->
-                <div id="galleryCounter" class="absolute bottom-8 text-white">
+                <div id="galleryCounter" class="absolute bottom-8 text-[#ffffff]">
                     1 / 10
                 </div>
             </div> --}}
-
-            <div class="w-full h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
         </div>
     </section>
 
 {{--===== DIVIDER --}}
-    <section class="bg-white py-8">
+    <section class="bg-[#ffffff] py-8">
         <div class="max-w-6xl mx-auto flex items-center justify-center">
             <div class="w-full h-1 bg-[#a59681] rounded-full"></div>
     
@@ -298,7 +286,7 @@
     </section>
 
     {{--===== BUKU TAMU ====================--}}
-    <section class="bg-white" id="buku-tamu">
+    <section class="bg-[#ffffff]" id="buku-tamu">
         <div class="text-center h-screen flex justify-between">
             <div class="w-[50%] pt-20">
                 <h2 class="text-7xl text-[#a59681]">Buku Tamu</h2>
@@ -325,13 +313,13 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="" class="bg-primary text-white px-8 py-3 rounded-lg">
+                        <button type="" class="bg-primary text-[#ffffff] px-8 py-3 rounded-lg">
                             Kirim RSVP
                         </button>
                     </div>
             </div>
             <div class="w-[50%] h-full flex relative">
-                <div class="absolute left-0 top-0 w-32 h-screen bg-gradient-to-r from-white to-transparent z-10"></div>
+                <div class="absolute left-0 top-0 w-32 h-screen bg-gradient-to-r from-[#ffffff] to-transparent z-10"></div>
 
                 <img src="{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}" alt="" class="object-cover w-full h-full">
             </div>
@@ -339,12 +327,12 @@
     </section>
 
     {{--===== GIFT ====================--}}
-    <section class="bg-white">
+    <section class="bg-[#ffffff]">
         <div class="text-center h-screen flex justify-between">
             <div class="w-[50%] h-full flex relative">
                 <img src="{{ asset('images/templates/simple-beauty/simple-beauty-photo1.png') }}" alt="" class="object-cover w-full h-full">
 
-                <div class="absolute right-0 top-0 w-32 h-screen bg-gradient-to-l from-white to-transparent z-10"></div>
+                <div class="absolute right-0 top-0 w-32 h-screen bg-gradient-to-l from-[#ffffff] to-transparent z-10"></div>
             </div>
             <div class="w-[50%] px-10 py-20 flex flex-col justify-center">
                 <div class="pb-20">
@@ -388,7 +376,7 @@
     </section>
 
     <section class="max-w-7xl mx-auto mt-10">
-        <div class="rounded-lg bg-white p-4">
+        <div class="rounded-lg bg-[#ffffff] p-4">
             <h1 class="font-semibold">Attandence Comments</h1>
             <hr class="border-black">
             <div class="border-b border-primary/20 py-4">
